@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streak Business Solutions — RevOps Consulting</title>
+  <meta name="description" content="Fractional RevOps for growing businesses. Pipeline architecture, reporting, forecasting, and CRM strategy — built from scratch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0e15;
+      --bg2: #10141e;
+      --bg3: #161b28;
+      --border: #1e2436;
+      --accent: #f97316;
+      --accent2: #fb923c;
+      --blue: #3b82f6;
+      --blue2: #60a5fa;
+      --green: #22c55e;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --card: #0f1320;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ── DUAL GLOW ORBS ── */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -120px;
+      right: -100px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(ellipse, rgba(59,130,246,.11) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -140px;
+      left: -80px;
+      width: 640px;
+      height: 640px;
+      background: radial-gradient(ellipse, rgba(249,115,22,.09) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    nav, section, footer, .trust-bar { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,14,21,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--bg3); }
+    .nav-links .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      font-weight: 700;
+      border-radius: 8px;
+    }
+    .nav-links .nav-cta:hover { background: var(--accent2); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 24px 80px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59,130,246,.12);
+      border: 1px solid rgba(59,130,246,.3);
+      color: var(--blue2);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      letter-spacing: .04em;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 6.5vw, 68px);
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -.03em;
+      margin-bottom: 24px;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero p {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color .2s, background .2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--accent); background: rgba(249,115,22,.06); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 20px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .trust-item span { color: var(--green); font-size: 16px; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 96px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.65;
+    }
+    .section-header { margin-bottom: 56px; }
+
+    /* ── PROBLEM SECTION ── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .problem-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid #ef4444;
+      border-radius: 12px;
+      padding: 28px 24px;
+    }
+    .problem-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .problem-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── WHAT WE BUILD — TIMELINE RAIL ── */
+    .timeline-rail { display: flex; flex-direction: column; }
+    .timeline-item { display: grid; grid-template-columns: 48px 1fr; gap: 0 20px; }
+    .timeline-item-last .timeline-left { justify-content: flex-start; }
+    .timeline-left { display: flex; flex-direction: column; align-items: center; }
+    .timeline-node {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(249,115,22,.12); border: 2px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; color: var(--accent);
+      flex-shrink: 0; z-index: 1;
+    }
+    .timeline-line { width: 2px; flex: 1; background: var(--border); margin: 6px 0; min-height: 24px; }
+    .timeline-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px 28px 24px;
+      margin-bottom: 20px; transition: border-color .2s;
+    }
+    .timeline-card:hover { border-color: rgba(249,115,22,.4); }
+    .timeline-card-accent { border-left: 3px solid var(--accent); border-radius: 0 16px 16px 0; }
+    .timeline-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+    .timeline-week {
+      background: rgba(249,115,22,.12); color: var(--accent);
+      font-size: 11px; font-weight: 700; padding: 3px 10px;
+      border-radius: 100px; letter-spacing: .06em; text-transform: uppercase;
+    }
+    .timeline-deliverable { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .timeline-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .timeline-card p { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+    .timeline-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tl-tag {
+      background: var(--bg3); border: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; font-weight: 500;
+      padding: 4px 12px; border-radius: 100px;
+    }
+    @media (max-width: 600px) {
+      .timeline-item { grid-template-columns: 36px 1fr; gap: 0 12px; }
+      .timeline-node { width: 32px; height: 32px; font-size: 12px; }
+    }
+
+    /* ── PRICING ── */
+    .pricing-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .pricing-tab {
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      transition: all .2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .pricing-tab.active, .pricing-tab:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .pricing-panel { display: none; }
+    .pricing-panel.active { display: block; }
+
+    /* Hourly */
+    .hourly-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .hourly-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .hourly-card.featured {
+      border-color: var(--accent);
+      position: relative;
+    }
+    .featured-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 14px;
+      border-radius: 100px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .hourly-tier { font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 12px; letter-spacing: .04em; text-transform: uppercase; }
+    .hourly-rate { font-size: 48px; font-weight: 900; color: var(--text); letter-spacing: -.03em; line-height: 1; }
+    .hourly-rate sup { font-size: 22px; vertical-align: super; font-weight: 700; }
+    .hourly-rate sub { font-size: 16px; font-weight: 500; color: var(--muted); vertical-align: baseline; }
+    .hourly-volume { font-size: 13px; color: var(--muted); margin-top: 8px; margin-bottom: 20px; }
+    .hourly-divider { height: 1px; background: var(--border); margin: 20px 0; }
+    .hourly-best { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* Function-based */
+    .fn-table { width: 100%; border-collapse: collapse; }
+    .fn-table th {
+      background: var(--bg3);
+      padding: 14px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .fn-table th:not(:first-child) { text-align: center; }
+    .fn-table td {
+      padding: 16px 20px;
+      font-size: 15px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .fn-table tr:last-child td { border-bottom: none; }
+    .fn-table tr:nth-child(even) td { background: rgba(255,255,255,.02); }
+    .fn-table td:not(:first-child) { text-align: center; color: var(--muted); }
+    .fn-table td:first-child { font-weight: 600; }
+    .fn-table .fn-price { color: var(--accent); font-weight: 700; }
+    .fn-table .fn-badge {
+      display: inline-block;
+      background: rgba(34,197,94,.12);
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .fn-featured td { background: rgba(249,115,22,.04) !important; }
+    .fn-featured td:first-child { color: var(--accent); }
+    .table-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .table-note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 16px;
+      padding: 14px 20px;
+      background: var(--bg2);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    /* Retainer */
+    .retainer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .retainer-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 28px;
+      position: relative;
+    }
+    .retainer-card.featured { border-color: var(--accent); }
+    .retainer-name { font-size: 14px; font-weight: 700; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; }
+    .retainer-price { font-size: 44px; font-weight: 900; letter-spacing: -.03em; line-height: 1; margin-bottom: 4px; }
+    .retainer-price sup { font-size: 20px; vertical-align: super; font-weight: 700; }
+    .retainer-period { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .retainer-hours { font-size: 13px; color: var(--blue2); font-weight: 600; margin-bottom: 20px; }
+    .retainer-divider { height: 1px; background: var(--border); margin: 20px 0; }
+    .retainer-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .retainer-features li { font-size: 14px; color: var(--muted); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+    .retainer-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── PROCESS ── */
+    .roadmap { display: flex; flex-direction: column; gap: 0; }
+    .roadmap-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 0 24px;
+      position: relative;
+    }
+    .roadmap-left { display: flex; flex-direction: column; align-items: center; }
+    .roadmap-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--accent);
+      flex-shrink: 0;
+      z-index: 1;
+    }
+    .roadmap-line {
+      width: 2px;
+      flex: 1;
+      background: var(--border);
+      margin: 4px 0;
+      min-height: 32px;
+    }
+    .roadmap-item:last-child .roadmap-line { display: none; }
+    .roadmap-content { padding: 0 0 40px; }
+    .roadmap-phase {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+      margin-top: 10px;
+    }
+    .roadmap-content h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+    .roadmap-content p { font-size: 15px; color: var(--muted); line-height: 1.65; }
+    .roadmap-timeline {
+      display: inline-block;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 12px;
+      border-radius: 100px;
+      margin-top: 12px;
+    }
+
+    /* ── WHAT SUCCESS LOOKS LIKE ── */
+    .success-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .success-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: 12px;
+      padding: 24px 22px;
+    }
+    .success-card p { font-size: 15px; color: var(--text); line-height: 1.65; }
+    .success-card p strong { color: var(--green); }
+
+    /* ── CONTACT / CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(249,115,22,.08) 0%, rgba(59,130,246,.08) 100%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 64px 48px;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cta-section h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 800; letter-spacing: -.02em; margin-bottom: 16px; }
+    .cta-section p { font-size: 17px; color: var(--muted); margin-bottom: 36px; line-height: 1.65; }
+    .cta-options { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .footer-logo { font-size: 20px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px; }
+    .footer-logo span { color: var(--accent); }
+    .footer-tagline { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { font-size: 13px; color: var(--muted); opacity: .6; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .fn-table th:nth-child(3), .fn-table td:nth-child(3) { display: none; }
+      .cta-section { padding: 40px 24px; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      .nav-links a { padding: 6px 10px; font-size: 13px; }
+      .trust-bar { gap: 20px; }
+      .pricing-tab { font-size: 13px; padding: 7px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Streak<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#what-we-build">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#process">Roadmap</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">📊 Fractional RevOps · Tampa, FL</div>
+  <h1>Your Revenue Engine<br/>Is <em>Broken.</em><br/>Let's Fix It.</h1>
+  <p>No dashboards. No pipeline visibility. No forecast. We build your entire RevOps infrastructure inside HubSpot — from zero to fully operational — without the cost of a full-time hire.</p>
+  <div class="hero-ctas">
+    <a href="#contact" class="btn-primary">Start With a Free Discovery Call</a>
+    <a href="#pricing" class="btn-ghost">See Pricing</a>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>✓</span> No Long-Term Contracts</div>
+  <div class="trust-item"><span>✓</span> Built from Scratch</div>
+  <div class="trust-item"><span>✓</span> Tampa, FL Based</div>
+  <div class="trust-item"><span>✓</span> RevOps Strategies</div>
+</div>
+
+<!-- THE PROBLEM -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">Sound Familiar?</h2>
+      <p class="section-sub">Most growing companies hit the same wall. The revenue motion exists — but nobody can see it, measure it, or trust it.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h3>No Dashboard Exists</h3>
+        <p>Leadership makes decisions based on gut feel because there's no real-time view of pipeline, revenue, or forecast.</p>
+      </div>
+      <div class="problem-card">
+        <h3>HubSpot Is a Mess</h3>
+        <p>Duplicate contacts, blank fields, inconsistent pipeline stages. Nobody trusts the data because nobody owns it.</p>
+      </div>
+      <div class="problem-card">
+        <h3>Reporting Takes Hours</h3>
+        <p>Every Monday someone exports CSVs and patches them together in a spreadsheet. That's not a system — that's a liability.</p>
+      </div>
+      <div class="problem-card">
+        <h3>Marketing and Sales Don't Align</h3>
+        <p>Marketing measures clicks. Sales measures calls. Nobody can tie activity to closed revenue because the attribution doesn't exist.</p>
+      </div>
+      <div class="problem-card">
+        <h3>No Forecast Process</h3>
+        <p>Month-end surprises, gut-check numbers, and no visibility into gap-to-quota until it's too late to course correct.</p>
+      </div>
+      <div class="problem-card">
+        <h3>Leads Fall Through the Cracks</h3>
+        <p>No routing, no automation, no follow-up tasks. Leads sit unassigned for days while competitors answer the phone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section class="section" id="what-we-build" style="background: var(--bg2);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">What We Build</div>
+      <h2 class="section-title">Your Entire RevOps Stack — Inside HubSpot</h2>
+      <p class="section-sub">HubSpot is your only analytics platform. We own it end-to-end and build every layer from scratch.</p>
+    </div>
+    <div class="timeline-rail">
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-node">1</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-week">Week 1</span>
+            <span class="timeline-deliverable">Deliverable: Audit Report + 90-Day Roadmap</span>
+          </div>
+          <h3>Audit &amp; Roadmap</h3>
+          <p>We start with a full HubSpot audit — data quality, pipeline gaps, workflow errors, reporting blind spots. You receive a written findings report and a prioritized 90-day roadmap before we change a single setting.</p>
+          <div class="timeline-tags">
+            <span class="tl-tag">CRM audit</span>
+            <span class="tl-tag">Gap analysis</span>
+            <span class="tl-tag">Priority matrix</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-node">2</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-week">Week 1–2</span>
+            <span class="timeline-deliverable">Deliverable: Clean CRM + Functioning Pipeline</span>
+          </div>
+          <h3>Pipeline &amp; CRM Foundation</h3>
+          <p>Standardized pipeline stages with written definitions, required fields, and probability settings. Lifecycle stage mapping for every contact. Duplicate merges and data cleanup so your team stops second-guessing the numbers.</p>
+          <div class="timeline-tags">
+            <span class="tl-tag">Pipeline rebuild</span>
+            <span class="tl-tag">Data cleanup</span>
+            <span class="tl-tag">Lifecycle mapping</span>
+            <span class="tl-tag">Lead routing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-node">3</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-week">Week 3</span>
+            <span class="timeline-deliverable">Deliverable: Core Dashboard Suite</span>
+          </div>
+          <h3>Reporting &amp; Dashboards</h3>
+          <p>Four dashboards built for the people who need them: an executive revenue view for the CRO, a pipeline health view for sales leadership, a funnel view for marketing, and an activity view for reps. Real-time visibility for the first time.</p>
+          <div class="timeline-tags">
+            <span class="tl-tag">Executive dashboard</span>
+            <span class="tl-tag">Pipeline health</span>
+            <span class="tl-tag">Marketing funnel</span>
+            <span class="tl-tag">Rep activity</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-node">4</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-meta">
+            <span class="timeline-week">Week 5–6</span>
+            <span class="timeline-deliverable">Deliverable: Forecast Model + Attribution Report</span>
+          </div>
+          <h3>Forecasting &amp; Attribution</h3>
+          <p>A weekly forecast model with commit, best-case, and pipeline views by rep and by team. Gap-to-quota visible in seconds. Revenue tied back to marketing source, campaign, and channel so spend decisions are finally based on data.</p>
+          <div class="timeline-tags">
+            <span class="tl-tag">Forecast model</span>
+            <span class="tl-tag">Gap-to-quota</span>
+            <span class="tl-tag">Attribution</span>
+            <span class="tl-tag">Source reporting</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item timeline-item-last">
+        <div class="timeline-left">
+          <div class="timeline-node">5</div>
+        </div>
+        <div class="timeline-card timeline-card-accent">
+          <div class="timeline-meta">
+            <span class="timeline-week">Day 51+</span>
+            <span class="timeline-deliverable">Deliverable: RunBook + Ongoing Governance</span>
+          </div>
+          <h3>Governance &amp; Documentation</h3>
+          <p>Every process, definition, and workflow documented in a RevOps RunBook your team owns. Recurring cadences set up and running. Everything built to be transferable — so a future in-house hire walks into a system, not a mess.</p>
+          <div class="timeline-tags">
+            <span class="tl-tag">RunBook</span>
+            <span class="tl-tag">Recurring cadences</span>
+            <span class="tl-tag">HubSpot governance</span>
+            <span class="tl-tag">Transferable docs</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Three Ways to Engage</h2>
+      <p class="section-sub">Pick the model that fits your budget and how you work. All engagements start with a paid Discovery &amp; Audit.</p>
+    </div>
+
+    <div class="pricing-tabs">
+      <button class="pricing-tab active" onclick="showTab('hourly', this)">Hourly Rate</button>
+      <button class="pricing-tab" onclick="showTab('function', this)">Project / Function</button>
+      <button class="pricing-tab" onclick="showTab('retainer', this)">Monthly Retainer</button>
+    </div>
+
+    <!-- HOURLY PANEL -->
+    <div class="pricing-panel active" id="panel-hourly">
+      <div class="hourly-grid">
+        <div class="hourly-card">
+          <div class="hourly-tier">Standard</div>
+          <div class="hourly-rate"><sup>$</sup>150<sub>/hr</sub></div>
+          <div class="hourly-volume">20+ hours / month</div>
+          <div class="hourly-divider"></div>
+          <div class="hourly-best">Best for steady, ongoing engagements with predictable monthly scope.</div>
+        </div>
+        <div class="hourly-card featured">
+          <div class="featured-badge">MOST FLEXIBLE</div>
+          <div class="hourly-tier">Mid-Volume</div>
+          <div class="hourly-rate"><sup>$</sup>165<sub>/hr</sub></div>
+          <div class="hourly-volume">10–19 hours / month</div>
+          <div class="hourly-divider"></div>
+          <div class="hourly-best">Best for regular engagements where scope varies week to week.</div>
+        </div>
+        <div class="hourly-card">
+          <div class="hourly-tier">Low Volume</div>
+          <div class="hourly-rate"><sup>$</sup>185<sub>/hr</sub></div>
+          <div class="hourly-volume">Under 10 hours / month</div>
+          <div class="hourly-divider"></div>
+          <div class="hourly-best">Best for spot work, one-off asks, and advisory sessions.</div>
+        </div>
+      </div>
+      <div class="table-note" style="margin-top:24px;">Minimum billing: 2 hours per engagement. Invoiced bi-weekly. No travel time billed for remote work.</div>
+    </div>
+
+    <!-- FUNCTION PANEL -->
+    <div class="pricing-panel" id="panel-function">
+      <div class="table-wrap">
+        <table class="fn-table">
+          <thead>
+            <tr>
+              <th>Deliverable</th>
+              <th>Entry Price</th>
+              <th>Standard Price</th>
+              <th>Timeline</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>HubSpot Audit + Roadmap</td>
+              <td class="fn-price">$1,500</td>
+              <td class="fn-price">$2,500</td>
+              <td>5–7 days</td>
+            </tr>
+            <tr>
+              <td>Dashboard Build <em style="color:var(--muted);font-size:13px;">(per dashboard)</em></td>
+              <td class="fn-price">$800</td>
+              <td class="fn-price">$1,500</td>
+              <td>3–5 days</td>
+            </tr>
+            <tr>
+              <td>Pipeline &amp; Forecast Reporting System</td>
+              <td class="fn-price">$2,500</td>
+              <td class="fn-price">$4,000</td>
+              <td>7–10 days</td>
+            </tr>
+            <tr>
+              <td>Lead Lifecycle + Funnel Reporting</td>
+              <td class="fn-price">$1,800</td>
+              <td class="fn-price">$3,000</td>
+              <td>5–7 days</td>
+            </tr>
+            <tr>
+              <td>Attribution Model Build</td>
+              <td class="fn-price">$2,000</td>
+              <td class="fn-price">$3,500</td>
+              <td>7–10 days</td>
+            </tr>
+            <tr>
+              <td>CRM Architecture + Sales Process Design</td>
+              <td class="fn-price">$3,500</td>
+              <td class="fn-price">$5,000</td>
+              <td>10–14 days</td>
+            </tr>
+            <tr class="fn-featured">
+              <td>Full RevOps Foundation <span class="fn-badge">BEST VALUE</span></td>
+              <td class="fn-price">$10,000</td>
+              <td class="fn-price">$15,000</td>
+              <td>30–45 days</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-note">Entry price for early-stage companies or limited budgets. Standard price for full-scope delivery. 50% deposit required to start. Balance due on delivery.</div>
+    </div>
+
+    <!-- RETAINER PANEL -->
+    <div class="pricing-panel" id="panel-retainer">
+      <div class="retainer-grid">
+        <div class="retainer-card">
+          <div class="retainer-name">Essentials</div>
+          <div class="retainer-price"><sup>$</sup>1,500</div>
+          <div class="retainer-period">per month</div>
+          <div class="retainer-hours">~10 hours / month</div>
+          <div class="retainer-divider"></div>
+          <ul class="retainer-features">
+            <li>Monthly reporting review</li>
+            <li>HubSpot governance &amp; hygiene</li>
+            <li>1 dashboard refresh per month</li>
+            <li>Email support</li>
+          </ul>
+        </div>
+        <div class="retainer-card featured">
+          <div class="featured-badge">MOST POPULAR</div>
+          <div class="retainer-name">Growth</div>
+          <div class="retainer-price"><sup>$</sup>2,800</div>
+          <div class="retainer-period">per month</div>
+          <div class="retainer-hours">~20 hours / month</div>
+          <div class="retainer-divider"></div>
+          <ul class="retainer-features">
+            <li>Everything in Essentials</li>
+            <li>Pipeline reporting &amp; forecasting</li>
+            <li>CRM hygiene &amp; data cleanup</li>
+            <li>Bi-weekly strategy sessions</li>
+            <li>Workflow audit &amp; optimization</li>
+          </ul>
+        </div>
+        <div class="retainer-card">
+          <div class="retainer-name">Full Fractional</div>
+          <div class="retainer-price"><sup>$</sup>5,000</div>
+          <div class="retainer-period">per month</div>
+          <div class="retainer-hours">~40 hours / month</div>
+          <div class="retainer-divider"></div>
+          <ul class="retainer-features">
+            <li>Everything in Growth</li>
+            <li>Full RevOps ownership</li>
+            <li>Leadership meeting attendance</li>
+            <li>Full build queue management</li>
+            <li>Attribution &amp; funnel reporting</li>
+            <li>Priority response time</li>
+          </ul>
+        </div>
+      </div>
+      <div class="table-note" style="margin-top:24px;">Month-to-month, no long-term contracts. All retainers begin after the Discovery &amp; Audit is complete.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS / ROADMAP -->
+<section class="section" id="process" style="background: var(--bg2);">
+  <div class="section-inner">
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+      <div>
+        <div class="section-header">
+          <div class="section-label">How It Works</div>
+          <h2 class="section-title">From Zero to Fully Operational</h2>
+          <p class="section-sub">A structured 45–60 day build followed by ongoing governance. Every phase has a deliverable you can see and approve before we move forward.</p>
+        </div>
+        <div class="roadmap">
+          <div class="roadmap-item">
+            <div class="roadmap-left"><div class="roadmap-num">1</div><div class="roadmap-line"></div></div>
+            <div class="roadmap-content">
+              <div class="roadmap-phase">Phase 1 · Days 1–7</div>
+              <h3>Discovery &amp; Audit</h3>
+              <p>Stakeholder interviews, full HubSpot audit, gap analysis. You receive a written audit report and 90-day roadmap before we touch anything.</p>
+              <span class="roadmap-timeline">Deliverable: Audit Report + Roadmap</span>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-left"><div class="roadmap-num">2</div><div class="roadmap-line"></div></div>
+            <div class="roadmap-content">
+              <div class="roadmap-phase">Phase 2 · Days 8–21</div>
+              <h3>Foundation Build</h3>
+              <p>Pipeline rebuild, lifecycle stage definition, CRM data cleanup, and lead routing automation. Your data becomes trustworthy.</p>
+              <span class="roadmap-timeline">Deliverable: Clean CRM + Functioning Pipeline</span>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-left"><div class="roadmap-num">3</div><div class="roadmap-line"></div></div>
+            <div class="roadmap-content">
+              <div class="roadmap-phase">Phase 3 · Days 22–35</div>
+              <h3>Reporting &amp; Dashboards</h3>
+              <p>Executive revenue dashboard, pipeline health, marketing funnel, and rep activity dashboards. Leadership gets real-time visibility for the first time.</p>
+              <span class="roadmap-timeline">Deliverable: Core Dashboard Suite</span>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-left"><div class="roadmap-num">4</div><div class="roadmap-line"></div></div>
+            <div class="roadmap-content">
+              <div class="roadmap-phase">Phase 4 · Days 36–50</div>
+              <h3>Forecasting &amp; Attribution</h3>
+              <p>Weekly forecast model with commit/best-case/pipeline views. Attribution model tying revenue back to marketing source and campaign.</p>
+              <span class="roadmap-timeline">Deliverable: Forecast Model + Attribution</span>
+            </div>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-left"><div class="roadmap-num">5</div><div class="roadmap-line"></div></div>
+            <div class="roadmap-content">
+              <div class="roadmap-phase">Phase 5 · Day 51+</div>
+              <h3>Governance &amp; Operations</h3>
+              <p>RunBook documentation, recurring cadences, and ongoing HubSpot management. Everything is transferable to a future in-house hire.</p>
+              <span class="roadmap-timeline">Deliverable: RunBook + Recurring Cadence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUCCESS SIDE -->
+      <div>
+        <div class="section-header">
+          <div class="section-label">90-Day Outcome</div>
+          <h2 class="section-title">What Success Looks Like</h2>
+        </div>
+        <div class="success-grid" style="grid-template-columns: 1fr;">
+          <div class="success-card">
+            <p>The CRO opens HubSpot and sees <strong>real-time revenue, pipeline, and forecast</strong> in under 60 seconds.</p>
+          </div>
+          <div class="success-card">
+            <p>Sales reps follow a <strong>consistent, documented process</strong> in HubSpot — no more guessing what stage a deal is in.</p>
+          </div>
+          <div class="success-card">
+            <p>Leads are routed <strong>automatically within minutes</strong> of entering the system. No more unassigned leads sitting for days.</p>
+          </div>
+          <div class="success-card">
+            <p>Marketing can <strong>tie campaigns to pipeline and revenue</strong> — no more flying blind on ad spend ROI.</p>
+          </div>
+          <div class="success-card">
+            <p>Leadership runs a <strong>weekly forecast cadence</strong> they actually trust. Month-end surprises become rare.</p>
+          </div>
+          <div class="success-card">
+            <p>Every process is <strong>documented and transferable</strong> — ready for a future in-house hire to take over.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="cta-section">
+      <div class="section-label" style="text-align:center;">Ready to start?</div>
+      <h2>Let's Fix Your Revenue Operations</h2>
+      <p>Every engagement starts with a paid Discovery &amp; Audit ($1,500–$2,500). We map what's broken, build you a roadmap, and you decide if you want to move forward. No long-term commitment required.</p>
+      <div class="cta-options">
+        <a href="mailto:hello@streakbizsolutions.com" class="btn-primary">Book a Discovery Call</a>
+        <a href="mailto:hello@streakbizsolutions.com" class="btn-ghost">Send a Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Streak<span>.</span></div>
+  <div class="footer-tagline">Fractional RevOps · Tampa, FL</div>
+  <nav class="footer-links">
+    <a href="#what-we-build">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#process">Roadmap</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="footer-copy">© 2026 Streak Business Solutions LLC. All rights reserved.</div>
+</footer>
+
+<!--
+=============================================================================
+  GOOGLE ADS PAGE — HIDDEN / COMMENTED OUT
+  Original Streak Biz Solutions Google Ads landing page.
+  Uncomment and move to a separate file (e.g. ads.html) to restore.
+=============================================================================
+
+  [TICKER]
+  ★ More Calls. More Jobs. More Revenue.
+  ★ AI-Powered Google Ads For Trades & Service Businesses
+  ★ No Long Contracts
+  ★ Results In 30 Days Or Less
+
+  [HERO]
+  AI-Powered Advertising
+  Stop Losing Jobs To Your Competition
+  We run Google Ads for contractors, tradespeople, and service businesses —
+  powered by AI that works around the clock so you get more calls, more bookings, and more jobs.
+  Stats: 3X More Leads | 24/7 AI Monitoring | 30 Day Results Guarantee
+
+  [HOW IT WORKS]
+  01 - Tell Us About Your Business
+  02 - We Build & Launch Your Ads
+  03 - Answer Your Phone & Get Paid
+
+  [WHO WE WORK WITH]
+  Plumbers, Electricians, HVAC, Roofers, Landscapers, Contractors,
+  Cleaning Services, Auto Repair, Locksmiths
+
+  [WHY STREAK]
+  AI That Never Sleeps | Every Dollar Tracked | We Focus On Calls & Jobs | No Long Contracts
+
+  [TESTIMONIALS]
+  Mike T. — Tampa Bay Plumbing & Drain
+  "I was spending $800 a month on ads and getting maybe 2–3 calls a week.
+  Streak took over and within 30 days I was getting 12–15 calls a week from the same budget."
+
+  Carlos R. — Sunshine State HVAC
+  "Other agencies talked a lot and delivered little. Streak set everything up in a week
+  and the leads started coming in. My guys are booked out 3 weeks now."
+
+  [AUDIT FORM]
+  Business Name | Your Name | Phone | Email | Trade | Budget | Area | Website | Challenge
+  CTA: Get My Free Audit Now
+
+=============================================================================
+-->
+
+<script>
+  function showTab(name, btn) {
+    document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
