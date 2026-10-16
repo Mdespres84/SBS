@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- HIDDEN: not linked from the main site and blocked from search engines. Remove the robots meta below when ready to launch. -->
   <meta name="robots" content="noindex, nofollow" />
-  <title>The RevOps Roadmap — Michael Despres | Streak Business Solutions</title>
-  <meta name="description" content="A stage-by-stage playbook for building Revenue Operations from first dollar to scale. Five revenue stages, the metrics that matter at each, and ten real, documented case studies." />
+  <title>The Foundations of Revenue Operations — Michael Despres | Streak Business Solutions</title>
+  <meta name="description" content="The complete foundational toolkit for Revenue Operations: definitions, operating models, lifecycle stages, and the core math — pipeline coverage, CAC, LTV, retention and forecasting — in plain language with worked examples." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -167,14 +167,30 @@
       .btn-primary, .btn-ghost { width: 100%; text-align: center; }
     }
   </style>
+  <style>
+    /* FORMULAS */
+    .formula-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media (max-width: 760px) { .formula-grid { grid-template-columns: 1fr; } }
+    .formula { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+    .formula .ch { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue2); margin-bottom: 8px; }
+    .formula h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; }
+    .formula .eq { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; background: var(--bg3); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; overflow-wrap: anywhere; }
+    .formula p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .toc li .part { display: none; }
+    .toc-part { column-span: all; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 22px 0 4px; }
+    .toc-part:first-child { padding-top: 0; }
+    .toc .toc-part::before { content: none; }
+    .cover-title { font-size: 31px; }
+    @media (max-width: 860px) { .cover-title { font-size: 26px; } }
+  </style>
 </head>
 <body>
 
 <nav>
   <a href="/" class="nav-logo">Streak<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#stages">The Five Stages</a></li>
-    <li><a href="#contents">Contents</a></li>
+    <li><a href="#inside">Inside the Book</a></li>
+    <li><a href="#math">The Math</a></li>
     <li><a href="#author">Author</a></li>
     <li><a href="#get-the-book" class="nav-cta">Get the Book</a></li>
   </ul>
@@ -185,20 +201,20 @@
   <div class="hero-inner">
     <div>
       <div class="hero-badge">📘 A Streak Business Solutions Book</div>
-      <h1>The RevOps <em>Roadmap</em></h1>
-      <div class="subtitle">A Stage-by-Stage Playbook for Building Revenue Operations from First Dollar to Scale</div>
-      <p class="lede">You already know CAC, LTV, NRR and pipeline coverage. What's missing is sequence: what to build, measure and fix at each stage, because the right answer at $2 million is often the wrong answer at $20 million.</p>
+      <h1>The Foundations of <em>Revenue Operations</em></h1>
+      <div class="subtitle">The definitions, models, and math every RevOps practitioner needs, in plain language.</div>
+      <p class="lede">Marketing hits its targets. Sales closes. Customer Success renews. And revenue still leaks out of the seams between them. This book gives you the toolkit to own those seams: one formula at a time, with round numbers you can follow in your head.</p>
       <div class="hero-ctas">
         <a href="#get-the-book" class="btn-primary">Get the Book</a>
-        <a href="#stages" class="btn-ghost">See the Five Stages</a>
+        <a href="#inside" class="btn-ghost">See What's Inside</a>
       </div>
     </div>
     <div class="cover-wrap" aria-hidden="true">
       <div class="cover">
         <div class="cover-imprint">Streak Business Solutions</div>
-        <div class="cover-title">The RevOps <span>Roadmap</span></div>
-        <div class="cover-sub">A Stage-by-Stage Playbook for Building Revenue Operations from First Dollar to Scale</div>
-        <div class="cover-road"><i></i><b></b><i></i><b></b><i></i><b></b><i></i><b></b><i></i></div>
+        <div class="cover-title">The Foundations of <span>Revenue Operations</span></div>
+        <div class="cover-sub">Definitions, models, and the core math of RevOps</div>
+        <div class="cover-road"><i></i><b></b><i></i><b></b><i></i><b></b><i></i></div>
         <div class="cover-author">Michael Despres</div>
       </div>
     </div>
@@ -209,120 +225,140 @@
 <section class="section section-alt">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-label">Why This Book</div>
-      <h2 class="section-title">Two Ways Companies Get Hurt</h2>
-      <p class="section-sub">Both trace back to the same root cause: no map, just a pile of tactics and a guess about when to use them.</p>
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">Three Teams, Three Versions of the Truth</h2>
+      <p class="section-sub">Nobody is lying and nobody is lazy. The system is built to produce this outcome, because each team was designed to optimize its own piece, not the whole.</p>
     </div>
     <div class="two-col">
       <div class="mistake-card">
-        <h3>Building too early</h3>
-        <p>A five-person startup with a lead-scoring model and a formal Sales–Marketing SLA before product-market fit isn't ahead of the curve. It's solving a coordination problem that doesn't exist yet.</p>
+        <h3>Broken handoffs</h3>
+        <p>Marketing hands off leads Sales thinks are junk. Sales closes deals with promises Customer Success never heard about. CS sees churn coming weeks early, and nobody upstream hears about it.</p>
       </div>
       <div class="mistake-card">
-        <h3>Building too late</h3>
-        <p>A $30 million company still running pipeline off a personal spreadsheet, with three floating definitions of "qualified lead," isn't being scrappy. It's leaking revenue at a scale that shows up on the board deck.</p>
+        <h3>Silos, one layer deeper</h3>
+        <p>For decades the fix was another ops team: Sales Ops, Marketing Ops, CS Ops. That just rebuilt the silos underneath, each with its own dashboard and its own definition of "qualified."</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STAGES -->
-<section class="section" id="stages">
+<!-- SIX PARTS -->
+<section class="section" id="inside">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-label">The Framework</div>
-      <h2 class="section-title">Five Stages, Tied to Revenue</h2>
-      <p class="section-sub">Each stage gets its own priorities, its own metrics, and two real, documented companies — one software, one not — that got that stage right.</p>
+      <div class="section-label">Inside the Book</div>
+      <h2 class="section-title">22 Chapters in Six Parts</h2>
+      <p class="section-sub">From what RevOps actually owns, through the math, to a roadmap you can execute in the right order.</p>
     </div>
     <div class="timeline-rail">
       <div class="timeline-item">
-        <div class="timeline-left"><div class="timeline-node">1</div><div class="timeline-line"></div></div>
+        <div class="timeline-left"><div class="timeline-node">I</div><div class="timeline-line"></div></div>
         <div class="timeline-card">
-          <div class="timeline-meta"><span class="timeline-week">~$0–1M</span><span class="timeline-deliverable">Chapters 3–4</span></div>
-          <h3>Founder-Led Revenue</h3>
-          <p>"RevOps" isn't a job title yet. It's a set of habits the founder builds or doesn't. The correct amount of formal infrastructure is close to zero, and the metrics that matter don't need a system.</p>
-          <div class="timeline-tags"><span class="tl-tag co">Superhuman</span><span class="tl-tag co">Zappos</span><span class="tl-tag">Pre-PMF signals</span><span class="tl-tag">What not to build</span></div>
+          <div class="timeline-meta"><span class="timeline-week">Part I</span><span class="timeline-deliverable">Chapters 1–3</span></div>
+          <h3>What RevOps Is</h3>
+          <p>Why silos form, a precise working definition, where RevOps's scope starts and stops, and how to choose an operating model that actually holds.</p>
+          <div class="timeline-tags"><span class="tl-tag">The Problem RevOps Solves</span><span class="tl-tag">Core Definition &amp; Scope</span><span class="tl-tag">The RevOps Operating Model</span></div>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-left"><div class="timeline-node">2</div><div class="timeline-line"></div></div>
+        <div class="timeline-left"><div class="timeline-node">II</div><div class="timeline-line"></div></div>
         <div class="timeline-card">
-          <div class="timeline-meta"><span class="timeline-week">~$1–10M</span><span class="timeline-deliverable">Chapters 5–6</span></div>
-          <h3>First Systems</h3>
-          <p>The first real CRM discipline and usually the first RevOps hire, fractional or full-time. A four-stage lifecycle that people actually follow, and the first numbers worth trusting.</p>
-          <div class="timeline-tags"><span class="tl-tag co">Buffer</span><span class="tl-tag co">Bonobos</span><span class="tl-tag">Fully loaded CAC</span><span class="tl-tag">Cohort logo retention</span></div>
+          <div class="timeline-meta"><span class="timeline-week">Part II</span><span class="timeline-deliverable">Chapters 4–7</span></div>
+          <h3>Mental Models &amp; Foundations</h3>
+          <p>Funnel or flywheel (and when to use each), named lifecycle stages everyone signs off on, systems of record vs. engagement, and data hygiene before any math.</p>
+          <div class="timeline-tags"><span class="tl-tag">The Funnel/Flywheel Debate</span><span class="tl-tag">Customer Lifecycle Stages</span><span class="tl-tag">Systems of Record vs. Engagement</span><span class="tl-tag">Data Hygiene</span></div>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-left"><div class="timeline-node">3</div><div class="timeline-line"></div></div>
+        <div class="timeline-left"><div class="timeline-node">III</div><div class="timeline-line"></div></div>
         <div class="timeline-card">
-          <div class="timeline-meta"><span class="timeline-week">~$10–50M</span><span class="timeline-deliverable">Chapters 7–8</span></div>
-          <h3>Scaling the Engine</h3>
-          <p>Operating model, forecasting, territory and comp have to be chosen on purpose instead of drifting into place. NRR, sales velocity and rep productivity finally mean something.</p>
-          <div class="timeline-tags"><span class="tl-tag co">HubSpot</span><span class="tl-tag co">Toast</span><span class="tl-tag">Weighted pipeline</span><span class="tl-tag">Territory design</span></div>
+          <div class="timeline-meta"><span class="timeline-week">Part III</span><span class="timeline-deliverable">Chapters 8–13 · the heart of the book</span></div>
+          <h3>The Math</h3>
+          <p>Every core RevOps calculation, one formula at a time, each with a worked example and the most common ways teams get it wrong.</p>
+          <div class="timeline-tags"><span class="tl-tag">Pipeline Math</span><span class="tl-tag">CAC</span><span class="tl-tag">LTV &amp; LTV:CAC</span><span class="tl-tag">Churn &amp; Retention</span><span class="tl-tag">Forecasting</span><span class="tl-tag">Quota &amp; Capacity</span></div>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-left"><div class="timeline-node">4</div><div class="timeline-line"></div></div>
+        <div class="timeline-left"><div class="timeline-node">IV</div><div class="timeline-line"></div></div>
         <div class="timeline-card">
-          <div class="timeline-meta"><span class="timeline-week">~$50–250M</span><span class="timeline-deliverable">Chapters 9–10</span></div>
-          <h3>Growth-Stage Optimization</h3>
-          <p>RevOps coordinates with Finance and Product as tightly as with Sales, Marketing and CS. Predictive forecasting becomes viable, with guardrails, and LTV:CAC gets calculated by cohort.</p>
-          <div class="timeline-tags"><span class="tl-tag co">Snowflake</span><span class="tl-tag co">Stitch Fix</span><span class="tl-tag">Predictive forecasting</span><span class="tl-tag">Expansion revenue</span></div>
+          <div class="timeline-meta"><span class="timeline-week">Part IV</span><span class="timeline-deliverable">Chapters 14–17</span></div>
+          <h3>Designing the Engine</h3>
+          <p>Lead scoring and routing, territories balanced by opportunity rather than account count, comp plans that match strategy, and SLAs that end the "bad leads" argument.</p>
+          <div class="timeline-tags"><span class="tl-tag">Lead Routing &amp; Scoring</span><span class="tl-tag">Territory &amp; Segmentation</span><span class="tl-tag">Comp Plan Design</span><span class="tl-tag">SLAs Between Teams</span></div>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-left"><div class="timeline-node">5</div></div>
+        <div class="timeline-left"><div class="timeline-node">V</div><div class="timeline-line"></div></div>
         <div class="timeline-card">
-          <div class="timeline-meta"><span class="timeline-week">$250M+</span><span class="timeline-deliverable">Chapters 11–12</span></div>
-          <h3>Enterprise RevOps</h3>
-          <p>The function has earned its seat at the board table. The job shifts from building the engine to sustaining it, at a scale where nobody can personally check everything.</p>
-          <div class="timeline-tags"><span class="tl-tag co">Salesforce</span><span class="tl-tag co">Costco</span><span class="tl-tag">Board-level RevOps</span><span class="tl-tag">The maturity flywheel</span></div>
+          <div class="timeline-meta"><span class="timeline-week">Part V</span><span class="timeline-deliverable">Chapters 18–20</span></div>
+          <h3>Measurement &amp; Reporting</h3>
+          <p>A three-tier metrics hierarchy, what a single source of truth really requires, and the reporting pitfalls that mislead even a well-built dashboard.</p>
+          <div class="timeline-tags"><span class="tl-tag">The Metrics Hierarchy</span><span class="tl-tag">Single Source of Truth</span><span class="tl-tag">Common Reporting Pitfalls</span></div>
         </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-node">VI</div></div>
+        <div class="timeline-card">
+          <div class="timeline-meta"><span class="timeline-week">Part VI</span><span class="timeline-deliverable">Chapters 21–22</span></div>
+          <h3>Putting It to Work</h3>
+          <p>A four-dimension maturity diagnostic, and the sequence to build in: data, then process, then technology, then scale.</p>
+          <div class="timeline-tags"><span class="tl-tag">Diagnosing RevOps Maturity</span><span class="tl-tag">The RevOps Roadmap</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE MATH -->
+<section class="section section-alt" id="math">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">A Taste of Part III</div>
+      <h2 class="section-title">The Math, Without the Mystery</h2>
+      <p class="section-sub">Every formula comes with round numbers you can check in your head, and the mistake that most often breaks it.</p>
+    </div>
+    <div class="formula-grid">
+      <div class="formula">
+        <div class="ch">Chapter 8</div>
+        <h3>The "3x rule" isn't a rule</h3>
+        <div class="eq">Required Coverage = 1 ÷ Win Rate</div>
+        <p>3x coverage is only right if you win about 33% of deals. A 25% win rate needs 4x, and an enterprise team at 15% needs closer to 7x.</p>
+      </div>
+      <div class="formula">
+        <div class="ch">Chapter 9</div>
+        <h3>CAC that tells the truth</h3>
+        <div class="eq">CAC = Total Sales &amp; Marketing Cost ÷ New Customers</div>
+        <p>Leave out salaries and tools, and a real $1,040 CAC gets reported as $720. That number looks 30% better than reality.</p>
+      </div>
+      <div class="formula">
+        <div class="ch">Chapter 10</div>
+        <h3>Retention is the real lever</h3>
+        <div class="eq">LTV = (ARPU × Gross Margin) ÷ Churn Rate</div>
+        <p>Cutting monthly churn from 5% to 4% lifts LTV 25% without spending one more dollar on acquisition.</p>
+      </div>
+      <div class="formula">
+        <div class="ch">Chapter 11</div>
+        <h3>Never read NRR alone</h3>
+        <div class="eq">105% NRR + 90% GRR = a masking problem</div>
+        <p>Strong expansion can hide a 10% revenue leak underneath. If the upsell motion slows, the churn problem shows up with nothing left to cover it.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- WHAT'S INSIDE -->
-<section class="section section-alt">
+<section class="section">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-label">What's Inside</div>
-      <h2 class="section-title">A Map You Build for Your Own Company</h2>
+      <div class="section-label">What You Get</div>
+      <h2 class="section-title">A Toolkit, Not a Textbook</h2>
     </div>
     <div class="feature-grid">
-      <div class="feature"><div class="num">4</div><h3>Dimension diagnostic</h3><p>Score process, data, technology and alignment to find the stage you're actually in, not just the one your revenue suggests.</p></div>
-      <div class="feature"><div class="num">5</div><h3>Revenue stages</h3><p>Each with a strategy chapter and a metrics chapter: what to build, who to hire, and what to deliberately leave alone.</p></div>
-      <div class="feature"><div class="num">10</div><h3>Real case studies</h3><p>Every company is real, researched and sourced. No composites. Where the public record is thin, the book says so.</p></div>
-      <div class="feature"><div class="num">1</div><h3>Roadmap workshop</h3><p>A step-by-step session that ends with one 90-day priority and one 12-month direction for your company.</p></div>
+      <div class="feature"><div class="num">22</div><h3>Focused chapters</h3><p>Each one answers a single question and ends by setting up the next.</p></div>
+      <div class="feature"><div class="num">4</div><h3>Pillars</h3><p>People, process, data and technology. Every RevOps responsibility maps back to one of them.</p></div>
+      <div class="feature"><div class="num">5</div><h3>Maturity stages</h3><p>An honest diagnostic so you build the right amount of RevOps for where you are today.</p></div>
+      <div class="feature"><div class="num">49</div><h3>Glossary terms</h3><p>From accelerators to weighted pipeline, defined in plain language.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- CONTENTS -->
-<section class="section" id="contents">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-label">Table of Contents</div>
-      <h2 class="section-title">14 Chapters</h2>
-    </div>
-    <ol class="toc">
-      <li>The Roadmap Framework</li>
-      <li>Reading the Terrain: A Real Diagnostic for Your Starting Point</li>
-      <li>What RevOps Means at This Size, and the Only Metrics That Matter Pre-PMF</li>
-      <li>Case Studies: Getting the Basics Right Early</li>
-      <li>Your First RevOps Hire, CRM, and Lifecycle Stages</li>
-      <li>CAC, Early Retention &amp; Pipeline Discipline</li>
-      <li>Operating Models, Forecasting, Territory &amp; Comp at Scale</li>
-      <li>NRR, Sales Velocity &amp; Rep Productivity</li>
-      <li>Cross-Functional RevOps &amp; Predictive Forecasting</li>
-      <li>LTV:CAC Precision, Cohorts &amp; Expansion Revenue</li>
-      <li>RevOps as a Strategic, Board-Level Function</li>
-      <li>The Maturity Flywheel</li>
-      <li>A Step-by-Step Workshop for Mapping Your Company's Roadmap</li>
-      <li>Common Pitfalls, and Closing: The Roadmap Never Ends</li>
-    </ol>
   </div>
 </section>
 
@@ -337,19 +373,19 @@
       <div class="who-card">
         <h3>This book is for you if…</h3>
         <ul>
-          <li>You're a founder deciding when to make your first RevOps hire</li>
-          <li>You're a RevOps practitioner who knows the metrics but needs the sequence</li>
-          <li>Your revenue has outgrown your systems and the forecast isn't trusted</li>
-          <li>You run a non-software business and want a playbook that still applies</li>
+          <li>You're new to RevOps, or moving into it from Sales, Marketing or CS Ops</li>
+          <li>You're a founder or revenue leader who needs to understand what RevOps should own</li>
+          <li>You want the core formulas explained step by step, with worked examples</li>
+          <li>Your teams argue about whose numbers are right</li>
         </ul>
       </div>
       <div class="who-card no">
         <h3>It's not…</h3>
         <ul>
-          <li>A glossary of RevOps acronyms</li>
           <li>A tool-by-tool CRM tutorial</li>
-          <li>A list of tactics with no guidance on when to use them</li>
-          <li>Built on made-up "composite" companies</li>
+          <li>Built on statistics you're asked to take on faith. Sources are cited, and you learn to sanity-check them</li>
+          <li>A one-size-fits-all org chart</li>
+          <li>A pitch for buying more software</li>
         </ul>
       </div>
     </div>
@@ -359,8 +395,8 @@
 <!-- PULL QUOTE -->
 <section class="section">
   <div class="pull">
-    <blockquote>"Both companies made the same error: running the <em>wrong stage's playbook</em>."</blockquote>
-    <cite>— The RevOps Roadmap, Chapter 1</cite>
+    <blockquote>"A perfectly correct formula run on rotten data produces a <em>confidently wrong answer</em>."</blockquote>
+    <cite>— The Foundations of Revenue Operations, Chapter 7</cite>
   </div>
 </section>
 
@@ -386,12 +422,12 @@
 <section class="section" id="get-the-book">
   <div class="cta-box">
     <div class="section-label">Get the Book</div>
-    <h2>Find Your Stage. Build Your Roadmap.</h2>
-    <p>Available in Kindle and paperback. Want help applying it? Streak runs the same diagnostic on your business and builds the roadmap with you.</p>
+    <h2>Build the Foundation First.</h2>
+    <p>Available in Kindle and paperback. Want help applying it? Streak runs the maturity diagnostic on your business and builds the foundation with you.</p>
     <div class="hero-ctas">
       <!-- TODO: replace href with the Amazon listing URL once the book is live -->
       <a href="#" class="btn-primary">Buy on Amazon</a>
-      <a href="mailto:hello@streakbizsolutions.com?subject=RevOps%20Roadmap%20Assessment" class="btn-ghost">Get a RevOps Assessment</a>
+      <a href="mailto:hello@streakbizsolutions.com?subject=RevOps%20Assessment" class="btn-ghost">Get a RevOps Assessment</a>
     </div>
   </div>
 </section>
