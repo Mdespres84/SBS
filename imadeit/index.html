@@ -145,18 +145,14 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;fon
 <h2 class="disp">Your next chapter starts here.</h2>
 <div class="slot">
 <form class="frm" data-waitlist novalidate>
-<label class="sr" for="nm">Name</label>
-<input id="nm" name="name" type="text" required autocomplete="name" placeholder="Your name">
 <label class="sr" for="em">Email address</label>
 <input id="em" name="email" type="email" required autocomplete="email" placeholder="you@email.com">
-<label class="sr" for="ph">Phone number</label>
-<input id="ph" name="phone" type="tel" required autocomplete="tel" placeholder="Phone number">
 <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 <button type="submit">Join the waitlist</button>
 </form>
 <p class="err" role="alert" hidden></p>
 </div>
-<p style="font-size:14px;color:var(--ink);max-width:40rem">By joining, you agree we may email, call, or text you about I Made It. No spam, and you can opt out any time.</p>
+<p style="font-size:14px;color:var(--ink);max-width:40rem">By joining, you agree we may email you about I Made It. No spam, and you can opt out any time.</p>
 </div>
 </section>
 </main>
@@ -186,16 +182,14 @@ var FALLBACK_EMAIL = 'michael.despres@gmail.com';
     var slot = form.parentNode, err = slot.querySelector('.err');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var name = form.name.value.trim(), email = form.email.value.trim(), phone = form.phone.value.trim();
+      var email = form.email.value.trim();
       function bad(msg, el) { err.textContent = msg; err.hidden = false; el.focus(); }
-      if (!name) return bad('Please enter your name.', form.name);
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return bad('Please enter a valid email address.', form.email);
-      if (phone.replace(/\D/g, '').length < 10) return bad('Please enter a phone number with area code.', form.phone);
       err.hidden = true;
       if (form._gotcha.value) { done(slot); return; }
       if (!SHEET_URL) {
         window.location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + encodeURIComponent('I Made It waitlist') +
-          '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone);
+          '&body=' + encodeURIComponent('Email: ' + email);
         done(slot); return;
       }
       var btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Joining…';
