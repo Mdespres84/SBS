@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- LAUNCH VERSION: on launch day this replaces index.html. Hidden from search until then. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>I Made It by Streak | Launch your personal brand</title>
+<meta name="description" content="A guided AI interview turns your real experience into a personal website and one-page résumé, published free. A hand up, not a handout.">
+<meta property="og:title" content="I Made It by Streak">
+<meta property="og:description" content="You built the career. Now launch the brand.">
+<meta property="og:url" content="https://streakbizsolutions.com/imadeit/">
+<meta name="theme-color" content="#14161A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14161A;--body:#2B2F36;--muted:#5B606A;--ground:#F4F3EF;--card:#FFFFFF;--accent:#FF6B2C;--accent-hi:#FF8650;--tint:#FFD8C7;--on-dark:#D9DBE0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--body);font-family:'Instrument Sans',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}a:hover{color:#C2410C}
+h1,h2,h3{color:var(--ink);margin:0}
+p{margin:0}
+.w{max-width:1160px;margin:0 auto;padding:0 max(16px,4vw)}
+.disp{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.025em}
+.stack{display:flex;flex-direction:column}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+section{padding:88px 0}
+header .w{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
+.logo{display:flex;align-items:baseline;gap:8px;text-decoration:none}
+.logo b{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;color:var(--ink);letter-spacing:-.02em}
+.logo span{font-size:13px;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:var(--ink);color:#fff;font-weight:600;font-size:15px;text-decoration:none}
+.pill:hover{color:#fff;background:#2B2F36}
+.tag{align-self:flex-start;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--tint);padding:6px 12px;border-radius:999px}
+.hero{padding:72px 0 88px}
+.hero .stack{gap:28px}
+.hero h1{font-weight:800;font-size:clamp(46px,7.4vw,104px);line-height:.98;letter-spacing:-.035em;max-width:15ch}
+.lede{font-size:21px;max-width:40rem;color:#3A3F48}
+.small{font-size:14px;color:var(--muted)}
+h2.big{font-weight:700;font-size:clamp(34px,4vw,52px);line-height:1.05}
+.go{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;border-radius:12px;background:var(--accent);color:var(--ink);font-weight:700;font-size:17px;text-decoration:none;border:0;font-family:inherit;cursor:pointer}
+.go:hover{background:var(--accent-hi);color:var(--ink)}
+.ghost{display:inline-flex;align-items:center;min-height:56px;padding:0 26px;border-radius:12px;border:1.5px solid var(--ink);color:var(--ink);font-weight:600;font-size:17px;text-decoration:none}
+.spots{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);background:#fff;border-radius:999px;padding:8px 16px;font-size:15px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.step{gap:12px;border-top:3px solid var(--ink);padding-top:20px}
+.num{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:44px;color:var(--accent);line-height:1}
+.card{background:var(--card);border-radius:16px;padding:24px;gap:8px}
+.card h3{font-size:19px}.card p{font-size:15px}
+.dark{background:var(--ink);color:var(--on-dark);padding:96px 0}
+.dark h2{font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:1;letter-spacing:-.03em;color:#fff;max-width:16ch}
+.dark h3{color:#fff;font-size:20px}
+.price{background:#fff;border-radius:18px;padding:32px;gap:14px}
+.price.main{border:2px solid var(--ink)}
+.amt{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:60px;color:var(--ink);line-height:1}
+.amt small{font-family:'Instrument Sans',sans-serif;font-size:18px;font-weight:500;color:var(--muted)}
+.was{font-size:20px;color:var(--muted);text-decoration:line-through;font-weight:600}
+.badge{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--accent);color:var(--ink);padding:5px 10px;border-radius:999px}
+.incl{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px;font-size:16px}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.agree input{width:22px;height:22px;margin-top:2px;accent-color:var(--ink);flex:0 0 auto}
+.buy[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.note{font-size:14px;color:var(--muted)}
+.policy{background:#fff;border-radius:18px;padding:32px;gap:12px}
+.policy ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.faq details{border-top:1.5px solid #D6D4CD;padding:18px 0}
+.faq details:last-child{border-bottom:1.5px solid #D6D4CD}
+.faq summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:19px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:'Bricolage Grotesque',sans-serif;font-size:26px;line-height:1;color:var(--accent)}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:10px;max-width:64ch}
+.cta{background:var(--accent)}
+.cta h2{font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:1;letter-spacing:-.03em;max-width:14ch}
+.cta .go{background:var(--ink);color:#fff}
+.cta .go:hover{background:#2B2F36;color:#fff}
+footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted);padding-top:28px;padding-bottom:28px}
+@media (max-width:860px){.g3,.g4,.g2{grid-template-columns:minmax(0,1fr)}section{padding:64px 0}.hero{padding:48px 0 64px}.go,.ghost{width:100%}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="w">
+<a class="logo" href="#top" aria-label="I Made It by Streak, home"><b>I Made It</b><span>by Streak</span></a>
+<a class="pill" href="#buy">Get started</a>
+</div>
+</header>
+
+<main id="top">
+<section class="hero">
+<div class="w stack">
+<div class="tag">A hand up, not a handout</div>
+<h1 class="disp">You built the career. Now launch the brand.</h1>
+<p class="lede">Answer a guided interview about your real experience. The AI turns it into a personal website, a one-page résumé, and a step-by-step path to publish it free. You do the work, you keep the site, and on launch day you get to say it: I made it.</p>
+<div class="row">
+<a class="go" href="#buy">Build my site:&nbsp;<span data-price>$99</span></a>
+<a class="ghost" href="#how">See how it works</a>
+</div>
+<div class="spots" data-spots-wrap><span class="dot" aria-hidden="true"></span><span><span data-spots>10</span> of 10 founding spots left at $99</span></div>
+</div>
+</section>
+
+<section id="how" style="background:#fff">
+<div class="w stack" style="gap:40px">
+<h2 class="disp big">Three steps. One afternoon.</h2>
+<div class="g3">
+<div class="stack step"><div class="num">01</div><h3 style="font-size:22px">Tell your story</h3><p>The AI interviews you one question at a time and pulls out the skills, results, and proof you already have.</p></div>
+<div class="stack step"><div class="num">02</div><h3 style="font-size:22px">Pick your look</h3><p>Every design choice comes as three options and a recommendation. You choose, edit, or ask for three more.</p></div>
+<div class="stack step"><div class="num">03</div><h3 style="font-size:22px">Launch your brand</h3><p>Follow the step-by-step guide to publish free on GitHub Pages. Check it on your phone, and you're live.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="w stack" style="gap:32px">
+<h2 class="disp big">What you walk away with</h2>
+<div class="g4">
+<div class="stack card"><h3>Your own website</h3><p>Built from your real experience, works on any phone.</p></div>
+<div class="stack card"><h3>A one-page résumé</h3><p>A matching PDF, ready to send.</p></div>
+<div class="stack card"><h3>Free hosting</h3><p>No monthly fee. The files are yours forever.</p></div>
+<div class="stack card"><h3>Your launch post</h3><p>An "I made it" card to share on LinkedIn.</p></div>
+</div>
+</div>
+</section>
+
+<section class="dark">
+<div class="w stack" style="gap:40px">
+<h2 class="disp">A hand up, <span style="color:var(--accent)">not a handout.</span></h2>
+<div class="g3">
+<div class="stack" style="gap:8px"><h3>Your facts only</h3><p>The AI never invents a result, a title, or a quote. A missing fact becomes a question.</p></div>
+<div class="stack" style="gap:8px"><h3>You approve everything</h3><p>Nothing goes on your site until you've checked it.</p></div>
+<div class="stack" style="gap:8px"><h3>It's yours</h3><p>You own the files and the address. Walk away any time and keep everything.</p></div>
+</div>
+</div>
+</section>
+
+<section id="buy">
+<div class="w stack" style="gap:32px">
+<div class="stack" style="gap:8px">
+<h2 class="disp big">Get started</h2>
+<p style="color:var(--muted)">One payment to build your site. Updates are optional.</p>
+</div>
+<div class="g2">
+<div class="stack price main">
+<div class="badge" data-founding-badge>Founding price</div>
+<div style="font-weight:700;color:var(--ink);font-size:20px">Build your site</div>
+<div class="row" style="gap:14px;align-items:baseline"><div class="amt"><span data-price>$99</span> <small>one time</small></div><span class="was" data-was>$149</span></div>
+<ul class="incl">
+<li>The full guided AI interview</li>
+<li>Three layouts and three looks, with a recommendation</li>
+<li>Your website files and a matching résumé PDF</li>
+<li>The step-by-step guide to publish free</li>
+<li>3 months of the Toolbox included</li>
+</ul>
+<label class="agree"><input type="checkbox" data-agree> <span>I've read the <a href="#refunds">refund policy</a>.</span></label>
+<a class="go buy" href="#" data-buy aria-disabled="true">Buy now:&nbsp;<span data-price>$99</span></a>
+<p class="note" data-buy-note>Secure checkout by Stripe.</p>
+</div>
+<div class="stack price">
+<div style="font-weight:700;color:var(--ink);font-size:20px">The Toolbox (optional)</div>
+<div class="amt">$39 <small>a year</small></div>
+<ul class="incl">
+<li>AI update sessions: new job, new results, new quotes</li>
+<li>A yearly career refresh interview</li>
+<li>New case studies for your site</li>
+</ul>
+<p>Your first 3 months are included with your build. Keep it after that if you want it.</p>
+<p class="note">Your site stays live with or without the Toolbox. It only keeps the AI available for updates.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="refunds" style="padding-top:0">
+<div class="w">
+<div class="stack policy">
+<h2 class="disp" style="font-size:28px">Refund policy</h2>
+<ul>
+<li><b>If the system doesn't work:</b> if your site files don't generate, the interview keeps failing, or the files won't load after you follow the guide, tell us. If we can't fix it within 5 business days, you get a full refund.</li>
+<li><b>If you haven't started:</b> ask within 7 days of buying and you get a full refund, as long as you haven't started the interview.</li>
+<li><b>Not covered:</b> choosing not to publish, changing your mind after your site is built, or skipping steps in the guide.</li>
+</ul>
+<p class="note">To ask for a refund, email <a href="mailto:hello@streakbizsolutions.com?subject=I%20Made%20It%20refund">hello@streakbizsolutions.com</a> with the email you bought with.</p>
+</div>
+</div>
+</section>
+
+<section style="background:#fff">
+<div class="w stack" style="gap:24px">
+<h2 class="disp big">Questions</h2>
+<div class="faq">
+<details><summary>Do I need to know how to code?</summary><p>No. You answer questions in plain words, pick from options, and follow a guide that shows every click.</p></details>
+<details><summary>Do I need a GitHub account?</summary><p>You'll make a free one during the guide. It's where your site lives, and it's yours.</p></details>
+<details><summary>What happens if I stop paying for the Toolbox?</summary><p>Nothing happens to your site. It stays live and it's still yours. You just won't have the AI for updates until you renew.</p></details>
+<details><summary>Do I need my own AI account?</summary><p>No. The AI is built in, and it only works on your site, résumé, and LinkedIn.</p></details>
+<details><summary>What if I get stuck?</summary><p>Every step has help built in. If something on our side breaks, we fix it, and the refund policy covers you if we can't.</p></details>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="w stack" style="gap:24px">
+<h2 class="disp">Your next chapter starts here.</h2>
+<a class="go" href="#buy" style="align-self:flex-start">Build my site:&nbsp;<span data-price>$99</span></a>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="w">
+<span>I Made It by Streak Business Solutions</span>
+<span>Your information is only used for I Made It. Never sold.</span>
+</div>
+</footer>
+
+<script>
+/* ===== Settings ===== */
+var CHECKOUT_URL = '';       /* Stripe Payment Link for the build; blank = button stays off */
+var FOUNDING_SPOTS_LEFT = 10; /* set to 0 when the 10 founding spots are gone */
+
+(function () {
+  var founding = FOUNDING_SPOTS_LEFT > 0;
+  var price = founding ? '$99' : '$149';
+  document.querySelectorAll('[data-price]').forEach(function (el) { el.textContent = price; });
+  document.querySelectorAll('[data-spots]').forEach(function (el) { el.textContent = FOUNDING_SPOTS_LEFT; });
+  if (!founding) {
+    document.querySelectorAll('[data-spots-wrap],[data-founding-badge],[data-was]').forEach(function (el) { el.remove(); });
+  }
+  var agree = document.querySelector('[data-agree]');
+  var buy = document.querySelector('[data-buy]');
+  var note = document.querySelector('[data-buy-note]');
+  if (!CHECKOUT_URL) { note.textContent = 'Checkout opens on launch day.'; }
+  function sync() {
+    var on = agree.checked && !!CHECKOUT_URL;
+    buy.setAttribute('aria-disabled', on ? 'false' : 'true');
+    buy.href = on ? CHECKOUT_URL : '#';
+  }
+  agree.addEventListener('change', sync);
+  sync();
+})();
+</script>
+</body>
+</html>
