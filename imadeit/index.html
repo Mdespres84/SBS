@@ -172,7 +172,6 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;fon
 /* ===== Settings ===== */
 var SHEET_URL = '';         /* the Google Apps Script web app URL (ends in /exec); blank = falls back to email */
 var FALLBACK_EMAIL = 'michael.despres@gmail.com';
-var GOATCOUNTER_CODE = '';  /* optional visitor stats, e.g. 'imadeit' */
 
 (function () {
   function done(slot) {
@@ -201,15 +200,10 @@ var GOATCOUNTER_CODE = '';  /* optional visitor stats, e.g. 'imadeit' */
       }
       var btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Joining…';
       fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
-        .then(function () { done(slot); if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'waitlist-joined', event: true }); })
+        .then(function () { done(slot); })
         .catch(function () { btn.disabled = false; btn.textContent = 'Join the waitlist'; err.textContent = 'Something went wrong. Please try again.'; err.hidden = false; });
     });
   });
-  if (GOATCOUNTER_CODE) {
-    var s = document.createElement('script'); s.async = true; s.src = 'https://gc.zgo.at/count.js';
-    s.setAttribute('data-goatcounter', 'https://' + GOATCOUNTER_CODE + '.goatcounter.com/count');
-    document.body.appendChild(s);
-  }
 })();
 </script>
 </body>
