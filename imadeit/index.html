@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- HIDDEN: not linked from the main site and blocked from search engines. Remove the robots meta below when ready to launch. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>I Made It by Streak | Launch your personal brand</title>
+<meta name="description" content="A guided AI interview turns your real experience into a personal website and one-page résumé, published free in an afternoon. A hand up, not a handout.">
+<meta property="og:title" content="I Made It by Streak">
+<meta property="og:description" content="You built the career. Now launch the brand. Join the waitlist.">
+<meta property="og:url" content="https://streakbizsolutions.com/imadeit/">
+<meta name="theme-color" content="#14161A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14161A;--body:#2B2F36;--muted:#5B606A;--ground:#F4F3EF;--card:#FFFFFF;--accent:#FF6B2C;--accent-hi:#FF8650;--tint:#FFD8C7;--on-dark:#D9DBE0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--body);font-family:'Instrument Sans',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}a:hover{color:#C2410C}
+h1,h2,h3{color:var(--ink);margin:0}
+p{margin:0}
+.w{max-width:1160px;margin:0 auto;padding:0 max(16px,4vw)}
+.disp{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.025em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.stack{display:flex;flex-direction:column}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+section{padding:88px 0}
+header .w{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
+.logo{display:flex;align-items:baseline;gap:8px;text-decoration:none}
+.logo b{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;color:var(--ink);letter-spacing:-.02em}
+.logo span{font-size:13px;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:var(--ink);color:#fff;font-weight:600;font-size:15px;text-decoration:none}
+.pill:hover{color:#fff;background:#2B2F36}
+.tag{align-self:flex-start;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--tint);padding:6px 12px;border-radius:999px}
+.hero{padding:72px 0 88px}
+.hero .stack{gap:28px}
+.hero h1{font-weight:800;font-size:clamp(46px,7.4vw,104px);line-height:.98;letter-spacing:-.035em;max-width:15ch}
+.lede{font-size:21px;max-width:40rem;color:#3A3F48}
+.small{font-size:14px;color:var(--muted)}
+h2.big{font-weight:700;font-size:clamp(34px,4vw,52px);line-height:1.05}
+.frm{display:flex;gap:10px;flex-wrap:wrap;max-width:760px}
+.frm input,.frm select{min-height:52px;border-radius:12px;border:1.5px solid var(--ink);padding:0 16px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
+.frm input{flex:1 1 200px}
+.go{align-self:flex-start;display:inline-flex;align-items:center;min-height:56px;padding:0 30px;border-radius:12px;background:var(--accent);color:var(--ink);font-weight:700;font-size:17px;text-decoration:none}
+.go:hover{background:var(--accent-hi);color:var(--ink)}
+.frm button{min-height:52px;padding:0 26px;border-radius:12px;border:0;background:var(--accent);color:var(--ink);font:inherit;font-weight:700;font-size:16px;cursor:pointer}
+.frm button:hover{background:var(--accent-hi)}
+.frm button[disabled]{opacity:.6;cursor:wait}
+.frm .hp{display:none}
+.done{max-width:760px;background:var(--ink);color:#fff;border-radius:14px;padding:18px 22px;font-weight:600}
+.err{color:#14161A;font-size:15px;font-weight:600}
+.step{gap:12px;border-top:3px solid var(--ink);padding-top:20px}
+.num{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:44px;color:var(--accent);line-height:1}
+.card{background:var(--card);border-radius:16px;padding:24px;gap:8px}
+.card h3{font-size:19px}.card p{font-size:15px}
+.dark{background:var(--ink);color:var(--on-dark);padding:96px 0}
+.dark h2{font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:1;letter-spacing:-.03em;color:#fff;max-width:16ch}
+.dark h3{color:#fff;font-size:20px}
+.price{background:#fff;border-radius:18px;padding:32px;gap:10px}
+.price.main{border:1.5px solid var(--ink)}
+.amt{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:56px;color:var(--ink);line-height:1}
+.amt small{font-family:'Instrument Sans',sans-serif;font-size:18px;font-weight:500;color:var(--muted)}
+.cta{background:var(--accent)}
+.cta h2{font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:1;letter-spacing:-.03em;max-width:14ch}
+.cta .frm button{background:var(--ink);color:#fff}
+.cta .frm button:hover{background:#2B2F36}
+footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted);padding-top:28px;padding-bottom:28px}
+@media (max-width:860px){.g3,.g4,.g2{grid-template-columns:minmax(0,1fr)}section{padding:64px 0}.hero{padding:48px 0 64px}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="w">
+<a class="logo" href="#top" aria-label="I Made It by Streak, home"><b>I Made It</b><span>by Streak</span></a>
+<a class="pill" href="#join">Join the waitlist</a>
+</div>
+</header>
+
+<main id="top">
+<section class="hero">
+<div class="w stack">
+<div class="tag">A hand up, not a handout</div>
+<h1 class="disp">You built the career. Now launch the brand.</h1>
+<p class="lede">Answer a guided interview about your real experience. The AI turns it into a personal website, a one-page résumé, and a step-by-step path to publish it free. You do the work, you keep the site, and on launch day you get to say it: I made it.</p>
+<a class="go" href="#join">Join the waitlist</a>
+<p class="small">Free to join. Beta testers build their site free in exchange for honest feedback.</p>
+</div>
+</section>
+
+<section style="background:#fff">
+<div class="w stack" style="gap:40px">
+<h2 class="disp big">Three steps. One afternoon.</h2>
+<div class="g3">
+<div class="stack step"><div class="num">01</div><h3 style="font-size:22px">Tell your story</h3><p>The AI interviews you one question at a time and pulls out the skills, results, and proof you already have.</p></div>
+<div class="stack step"><div class="num">02</div><h3 style="font-size:22px">Pick your look</h3><p>Every design choice comes as three options and a recommendation. You choose, edit, or ask for three more.</p></div>
+<div class="stack step"><div class="num">03</div><h3 style="font-size:22px">Launch your brand</h3><p>Follow the step-by-step guide to publish free on GitHub Pages. Check it on your phone, and you're live.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="w stack" style="gap:32px">
+<h2 class="disp big">What you walk away with</h2>
+<div class="g4">
+<div class="stack card"><h3>Your own website</h3><p>Built from your real experience, works on any phone.</p></div>
+<div class="stack card"><h3>A one-page résumé</h3><p>A matching PDF, ready to send.</p></div>
+<div class="stack card"><h3>Free hosting</h3><p>No monthly fee. The files are yours forever.</p></div>
+<div class="stack card"><h3>Your launch post</h3><p>An "I made it" card to share on LinkedIn.</p></div>
+</div>
+</div>
+</section>
+
+<section class="dark">
+<div class="w stack" style="gap:40px">
+<h2 class="disp">A hand up, <span style="color:var(--accent)">not a handout.</span></h2>
+<div class="g3">
+<div class="stack" style="gap:8px"><h3>Your facts only</h3><p>The AI never invents a result, a title, or a quote. A missing fact becomes a question.</p></div>
+<div class="stack" style="gap:8px"><h3>You approve everything</h3><p>Nothing goes on your site until you've checked it.</p></div>
+<div class="stack" style="gap:8px"><h3>It's yours</h3><p>You own the files and the address. Walk away any time and keep everything.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="w stack" style="gap:32px">
+<div class="stack" style="gap:8px">
+<h2 class="disp big">Simple pricing at launch</h2>
+<p style="color:var(--muted)">Waitlist members hear about founding prices first.</p>
+</div>
+<div class="g2">
+<div class="stack price main"><div style="font-weight:700;color:var(--ink)">Build your site</div><div class="amt">$49 <small>one time</small></div><p>The guided interview, your site, your résumé PDF, and the publishing guide.</p></div>
+<div class="stack price"><div style="font-weight:700;color:var(--ink)">The Toolbox (optional)</div><div class="amt">$39 <small>a year</small></div><p>Keep your site current: new job, new results, a yearly career refresh. First 3 months included.</p></div>
+</div>
+</div>
+</section>
+
+<section id="join" class="cta">
+<div class="w stack" style="gap:24px">
+<h2 class="disp">Your next chapter starts here.</h2>
+<div class="slot">
+<form class="frm" data-waitlist novalidate>
+<label class="sr" for="nm">Name</label>
+<input id="nm" name="name" type="text" required autocomplete="name" placeholder="Your name">
+<label class="sr" for="em">Email address</label>
+<input id="em" name="email" type="email" required autocomplete="email" placeholder="you@email.com">
+<label class="sr" for="ph">Phone number</label>
+<input id="ph" name="phone" type="tel" required autocomplete="tel" placeholder="Phone number">
+<input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button type="submit">Join the waitlist</button>
+</form>
+<p class="err" role="alert" hidden></p>
+</div>
+<p style="font-size:14px;color:var(--ink);max-width:40rem">By joining, you agree we may email, call, or text you about I Made It. No spam, and you can opt out any time.</p>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="w">
+<span>I Made It by Streak Business Solutions</span>
+<span>We only use your contact details for I Made It updates. Never sold.</span>
+</div>
+</footer>
+
+<script>
+/* ===== Settings ===== */
+var SHEET_URL = '';         /* the Google Apps Script web app URL (ends in /exec); blank = falls back to email */
+var FALLBACK_EMAIL = 'michael.despres@gmail.com';
+var GOATCOUNTER_CODE = '';  /* optional visitor stats, e.g. 'imadeit' */
+
+(function () {
+  function done(slot) {
+    var msg = document.createElement('div');
+    msg.className = 'done';
+    msg.setAttribute('role', 'status');
+    msg.textContent = "You're on the list. We'll email you when beta spots open.";
+    slot.innerHTML = '';
+    slot.appendChild(msg);
+  }
+  document.querySelectorAll('form[data-waitlist]').forEach(function (form) {
+    var slot = form.parentNode, err = slot.querySelector('.err');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = form.name.value.trim(), email = form.email.value.trim(), phone = form.phone.value.trim();
+      function bad(msg, el) { err.textContent = msg; err.hidden = false; el.focus(); }
+      if (!name) return bad('Please enter your name.', form.name);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return bad('Please enter a valid email address.', form.email);
+      if (phone.replace(/\D/g, '').length < 10) return bad('Please enter a phone number with area code.', form.phone);
+      err.hidden = true;
+      if (form._gotcha.value) { done(slot); return; }
+      if (!SHEET_URL) {
+        window.location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + encodeURIComponent('I Made It waitlist') +
+          '&body=' + encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone);
+        done(slot); return;
+      }
+      var btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Joining…';
+      fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
+        .then(function () { done(slot); if (window.goatcounter && goatcounter.count) goatcounter.count({ path: 'waitlist-joined', event: true }); })
+        .catch(function () { btn.disabled = false; btn.textContent = 'Join the waitlist'; err.textContent = 'Something went wrong. Please try again.'; err.hidden = false; });
+    });
+  });
+  if (GOATCOUNTER_CODE) {
+    var s = document.createElement('script'); s.async = true; s.src = 'https://gc.zgo.at/count.js';
+    s.setAttribute('data-goatcounter', 'https://' + GOATCOUNTER_CODE + '.goatcounter.com/count');
+    document.body.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
