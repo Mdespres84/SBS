@@ -166,36 +166,48 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;fon
 
 <script>
 /* ===== Settings ===== */
-var SHEET_URL = '';         /* the Google Apps Script web app URL (ends in /exec); blank = falls back to email */
-var FALLBACK_EMAIL = 'michael.despres@gmail.com';
+/* Signups are saved to the "waitlist" table in the Supabase project "imadeit".
+   This key is public by design: it can only ADD an email, never read the list. */
+var SUPABASE_URL = 'https://oxnvuzuvpnckmacbfabk.supabase.co';
+var SUPABASE_KEY = 'sb_publishable_TOSiiQW4GtbCDkk9jmyioQ_Bjoo6rU5';
 
 (function () {
-  function done(slot) {
+  function done(slot, already) {
     var msg = document.createElement('div');
     msg.className = 'done';
     msg.setAttribute('role', 'status');
-    msg.textContent = "You're on the list. We'll email you when beta spots open.";
+    msg.textContent = already ? "You're already on the list. We'll email you when beta spots open."
+                              : "You're on the list. We'll email you when beta spots open.";
     slot.innerHTML = '';
     slot.appendChild(msg);
+  }
+  function source() {
+    var p = new URLSearchParams(location.search), parts = [];
+    ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) { if (p.get(k)) parts.push(k.slice(4) + '=' + p.get(k)); });
+    if (!parts.length && document.referrer) parts.push('ref=' + document.referrer);
+    return parts.join('&').slice(0, 200) || null;
   }
   document.querySelectorAll('form[data-waitlist]').forEach(function (form) {
     var slot = form.parentNode, err = slot.querySelector('.err');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var email = form.email.value.trim();
+      var email = form.email.value.trim().toLowerCase();
       function bad(msg, el) { err.textContent = msg; err.hidden = false; el.focus(); }
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return bad('Please enter a valid email address.', form.email);
       err.hidden = true;
       if (form._gotcha.value) { done(slot); return; }
-      if (!SHEET_URL) {
-        window.location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + encodeURIComponent('I Made It waitlist') +
-          '&body=' + encodeURIComponent('Email: ' + email);
-        done(slot); return;
-      }
       var btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Joining…';
-      fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(new FormData(form)) })
-        .then(function () { done(slot); })
-        .catch(function () { btn.disabled = false; btn.textContent = 'Join the waitlist'; err.textContent = 'Something went wrong. Please try again.'; err.hidden = false; });
+      fetch(SUPABASE_URL + '/rest/v1/waitlist', {
+        method: 'POST',
+        headers: { 'apikey': SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ email: email, source: source(), user_agent: navigator.userAgent.slice(0, 500) })
+      })
+        .then(function (res) {
+          if (res.ok) return done(slot, false);
+          if (res.status === 409) return done(slot, true);
+          throw new Error('status ' + res.status);
+        })
+        .catch(function () { btn.disabled = false; btn.textContent = 'Join the waitlist'; err.textContent = "We couldn't save that just now. Please try again in a minute."; err.hidden = false; });
     });
   });
 })();
