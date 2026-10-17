@@ -166,10 +166,9 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;fon
 
 <script>
 /* ===== Settings ===== */
-/* Signups are saved to the "waitlist" table in the Supabase project "imadeit".
-   This key is public by design: it can only ADD an email, never read the list. */
-var SUPABASE_URL = 'https://oxnvuzuvpnckmacbfabk.supabase.co';
-var SUPABASE_KEY = 'sb_publishable_TOSiiQW4GtbCDkk9jmyioQ_Bjoo6rU5';
+/* Signups go to the "IMadeIt Waitlist" Google Sheet (info@streakbizsolutions.com) via its Apps Script web app.
+   This link can only ADD a row; it cannot read the sheet. */
+var SHEET_URL = 'https://script.google.com/macros/s/AKfycbwgcQapCU-s5IZKC7UWLesxaByA_dXaeEqZpMlcTRPlZgKdO-Rgxxr9OruhwpZUtowZ/exec';
 
 (function () {
   function done(slot, already) {
@@ -197,16 +196,9 @@ var SUPABASE_KEY = 'sb_publishable_TOSiiQW4GtbCDkk9jmyioQ_Bjoo6rU5';
       err.hidden = true;
       if (form._gotcha.value) { done(slot); return; }
       var btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Joining…';
-      fetch(SUPABASE_URL + '/rest/v1/waitlist', {
-        method: 'POST',
-        headers: { 'apikey': SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
-        body: JSON.stringify({ email: email, source: source(), user_agent: navigator.userAgent.slice(0, 500) })
-      })
-        .then(function (res) {
-          if (res.ok) return done(slot, false);
-          if (res.status === 409) return done(slot, true);
-          throw new Error('status ' + res.status);
-        })
+      var body = new URLSearchParams({ email: email, source: source() || '', user_agent: navigator.userAgent.slice(0, 500) });
+      fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: body })
+        .then(function () { done(slot, false); })
         .catch(function () { btn.disabled = false; btn.textContent = 'Join the waitlist'; err.textContent = "We couldn't save that just now. Please try again in a minute."; err.hidden = false; });
     });
   });
