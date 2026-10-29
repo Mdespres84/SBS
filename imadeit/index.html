@@ -6,153 +6,312 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>I Made It by Streak | Launch your personal brand</title>
-<meta name="description" content="A guided AI interview turns your real experience into a personal website and one-page résumé, published free in an afternoon. A hand up, not a handout.">
+<meta name="description" content="Paste your résumé, answer guided questions, and leave with a custom personal website you publish free. Join the I Made It waitlist.">
 <meta property="og:title" content="I Made It by Streak">
-<meta property="og:description" content="You built the career. Now launch the brand. Join the waitlist.">
+<meta property="og:description" content="Paste your résumé. Leave with a website. Join the waitlist.">
 <meta property="og:url" content="https://streakbizsolutions.com/imadeit/">
-<meta name="theme-color" content="#14161A">
+<meta name="theme-color" content="#eef1f6">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#14161A;--body:#2B2F36;--muted:#5B606A;--ground:#F4F3EF;--card:#FFFFFF;--accent:#FF6B2C;--accent-hi:#FF8650;--tint:#FFD8C7;--on-dark:#D9DBE0}
+:root{
+  --paper:#eef1f6; --white:#fff; --ink:#0b0e15; --body:#3b4252; --muted:#5e6878; --rule:#d9dee8;
+  --night:#0b0e15; --panel:#10141e; --raised:#161b28; --line:#1e2436; --line-hi:#2a3249;
+  --on-night:#f1f5f9; --night-muted:#94a3b8; --night-faint:#64748b;
+  --ember:#f97316; --ember-hi:#fb923c; --ember-soft:rgba(249,115,22,.14);
+  --signal:#60a5fa; --signal-soft:rgba(59,130,246,.12);
+}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--ground);color:var(--body);font-family:'Instrument Sans',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:var(--ink)}a:hover{color:#C2410C}
-h1,h2,h3{color:var(--ink);margin:0}
-p{margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--body);font:17px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{color:var(--ink);letter-spacing:-.03em}
+a{color:inherit}
 .w{max-width:1160px;margin:0 auto;padding:0 max(16px,4vw)}
-.disp{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.025em}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.stack{display:flex;flex-direction:column}
-.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-section{padding:88px 0}
-header .w{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
-.logo{display:flex;align-items:baseline;gap:8px;text-decoration:none}
-.logo b{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;color:var(--ink);letter-spacing:-.02em}
-.logo span{font-size:13px;color:var(--muted)}
-.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;border-radius:999px;background:var(--ink);color:#fff;font-weight:600;font-size:15px;text-decoration:none}
-.pill:hover{color:#fff;background:#2B2F36}
-.tag{align-self:flex-start;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--tint);padding:6px 12px;border-radius:999px}
-.hero{padding:72px 0 88px}
-.hero .stack{gap:28px}
-.hero h1{font-weight:800;font-size:clamp(46px,7.4vw,104px);line-height:.98;letter-spacing:-.035em;max-width:15ch}
-.lede{font-size:21px;max-width:40rem;color:#3A3F48}
-.small{font-size:14px;color:var(--muted)}
-h2.big{font-weight:700;font-size:clamp(34px,4vw,52px);line-height:1.05}
-.frm{display:flex;gap:10px;flex-wrap:wrap;max-width:760px}
-.frm input,.frm select{min-height:52px;border-radius:12px;border:1.5px solid var(--ink);padding:0 16px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
-.frm input{flex:1 1 200px}
-.go{align-self:flex-start;display:inline-flex;align-items:center;min-height:56px;padding:0 30px;border-radius:12px;background:var(--accent);color:var(--ink);font-weight:700;font-size:17px;text-decoration:none}
-.go:hover{background:var(--accent-hi);color:var(--ink)}
-.frm button{min-height:52px;padding:0 26px;border-radius:12px;border:0;background:var(--accent);color:var(--ink);font:inherit;font-weight:700;font-size:16px;cursor:pointer}
-.frm button:hover{background:var(--accent-hi)}
+:focus-visible{outline:3px solid var(--ember);outline-offset:3px;border-radius:6px}
+
+/* header */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:20px;padding-bottom:20px}
+.brand{font-weight:800;font-size:20px;letter-spacing:-.03em;color:var(--ink);text-decoration:none}
+.brand i{font-style:normal;color:var(--ember)}
+.brand small{font-weight:500;font-size:13px;letter-spacing:0;color:var(--muted);margin-left:6px}
+.nav-cta{display:inline-flex;align-items:center;min-height:42px;padding:0 18px;border-radius:10px;background:var(--ink);color:#fff;font-weight:600;font-size:15px;text-decoration:none}
+.nav-cta:hover{background:#1e2436}
+
+/* forms */
+.frm{display:flex;gap:10px;flex-wrap:wrap;width:100%;max-width:520px}
+.frm input{flex:1 1 220px;min-height:54px;border-radius:12px;border:1.5px solid #c5ccd8;background:#fff;padding:0 16px;font:inherit;font-size:16px;color:var(--ink)}
+.frm input:focus{border-color:var(--ink);outline:none;box-shadow:0 0 0 4px rgba(11,14,21,.08)}
+.frm button{min-height:54px;padding:0 24px;border:0;border-radius:12px;background:var(--ember);color:var(--ink);font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.frm button:hover{background:var(--ember-hi)}
 .frm button[disabled]{opacity:.6;cursor:wait}
 .frm .hp{display:none}
-.done{max-width:760px;background:var(--ink);color:#fff;border-radius:14px;padding:18px 22px;font-weight:600}
-.err{color:#14161A;font-size:15px;font-weight:600}
-.step{gap:12px;border-top:3px solid var(--ink);padding-top:20px}
-.num{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:44px;color:var(--accent);line-height:1}
-.card{background:var(--card);border-radius:16px;padding:24px;gap:8px}
-.card h3{font-size:19px}.card p{font-size:15px}
-.dark{background:var(--ink);color:var(--on-dark);padding:96px 0}
-.dark h2{font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:1;letter-spacing:-.03em;color:#fff;max-width:16ch}
-.dark h3{color:#fff;font-size:20px}
-.price{background:#fff;border-radius:18px;padding:32px;gap:10px}
-.price.main{border:1.5px solid var(--ink)}
-.amt{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:56px;color:var(--ink);line-height:1}
-.amt small{font-family:'Instrument Sans',sans-serif;font-size:18px;font-weight:500;color:var(--muted)}
-.cta{background:var(--accent)}
-.cta h2{font-weight:800;font-size:clamp(40px,5.4vw,76px);line-height:1;letter-spacing:-.03em;max-width:14ch}
-.cta .frm button{background:var(--ink);color:#fff}
-.cta .frm button:hover{background:#2B2F36}
-footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted);padding-top:28px;padding-bottom:28px}
-@media (max-width:860px){.g3,.g4,.g2{grid-template-columns:minmax(0,1fr)}section{padding:64px 0}.hero{padding:48px 0 64px}}
+.done{max-width:520px;background:var(--ink);color:#fff;border-radius:12px;padding:16px 20px;font-weight:600}
+.err{color:#b42318;font-size:15px;font-weight:600;margin-top:8px}
+.fine{font-size:14px;color:var(--muted)}
+
+/* hero */
+.hero{text-align:center;padding:40px 0 72px;overflow:hidden}
+.hero h1{font-size:clamp(44px,7vw,84px);line-height:.98;letter-spacing:-.05em;font-weight:800;max-width:16ch;margin:0 auto 20px}
+.hero .lede{font-size:clamp(17px,1.6vw,20px);max-width:34em;margin:0 auto 28px;color:var(--body)}
+.hero .slot{display:flex;flex-direction:column;align-items:center}
+.hero .fine{margin-top:12px}
+
+/* the transformation */
+.stage{position:relative;max-width:900px;height:500px;margin:56px auto 0}
+.doc{position:absolute;left:4%;top:56px;width:min(330px,42%);height:400px;background:#fff;border-radius:6px;box-shadow:0 24px 60px rgba(15,23,42,.14);padding:30px 26px;text-align:left;transform:rotate(-4deg)}
+.doc .n{font-weight:700;font-size:17px;color:var(--ink);letter-spacing:-.01em}
+.doc .h{font-size:11px;font-weight:700;color:#7a8597;margin:18px 0 4px;letter-spacing:.04em}
+.doc .l{height:8px;border-radius:4px;background:#e3e8ef;margin:9px 0}
+.doc .hl{background:var(--ember-soft);height:10px}
+.flow{position:absolute;left:47%;top:200px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--muted)}
+.flow svg{display:block}
+.phone{position:absolute;right:6%;top:0;width:250px;height:480px;border-radius:38px;background:var(--night);padding:11px;box-shadow:0 34px 80px rgba(15,23,42,.28)}
+.scr{height:100%;border-radius:28px;background:var(--panel);overflow:hidden;color:var(--on-night);text-align:left;padding:26px 18px}
+.scr .av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#334155,#64748b);margin-bottom:16px}
+.scr h4{margin:0;font-size:21px;line-height:1.12;letter-spacing:-.03em;font-weight:750}
+.scr p{font-size:11.5px;color:var(--night-muted);line-height:1.5;margin:10px 0 14px}
+.scr .b{display:inline-block;background:var(--ember);color:var(--ink);font-weight:700;font-size:11px;padding:7px 12px;border-radius:7px}
+.scr .k{margin-top:18px;border-top:1px solid var(--line);padding-top:12px;font-size:11px;color:#cbd5e1}
+.scr .k b{display:block;font-size:22px;color:var(--ember-hi);letter-spacing:-.02em}
+.cap{position:absolute;font-size:14px;font-weight:600;color:var(--muted)}
+.cap.l{left:6%;bottom:0}.cap.r{right:6%;bottom:0;width:250px;text-align:center}
+.example{position:absolute;right:calc(6% + 14px);top:-12px;background:#fff;color:var(--muted);font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;box-shadow:0 4px 12px rgba(15,23,42,.08);z-index:2}
+
+@media (prefers-reduced-motion:no-preference){
+  .doc .hl{animation:mark 1s .5s both ease-out}
+  .phone{animation:rise .8s 1.2s both cubic-bezier(.2,.7,.2,1)}
+  @keyframes mark{from{background:#e3e8ef}to{background:var(--ember-soft)}}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+}
+
+/* sections */
+section.band{padding:104px 0}
+.white{background:#fff}
+h2{font-size:clamp(32px,4vw,48px);line-height:1.04;font-weight:800;letter-spacing:-.04em;max-width:18ch}
+.intro{display:flex;flex-direction:column;gap:14px;margin-bottom:48px}
+.intro p{max-width:38em;font-size:18px}
+
+/* how it works */
+.how{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:center}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:28px}
+.steps li{display:grid;grid-template-columns:36px 1fr;gap:16px}
+.steps .n{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.steps h3{font-size:20px;margin-bottom:4px}
+.steps p{font-size:16px}
+
+/* the app window */
+.win{background:var(--panel);border:1px solid var(--line-hi);border-radius:14px;box-shadow:0 36px 80px rgba(11,14,21,.25);overflow:hidden;color:var(--on-night)}
+.bar{height:36px;display:flex;align-items:center;gap:7px;padding:0 14px;border-bottom:1px solid var(--line);background:#0e121b}
+.bar span{width:10px;height:10px;border-radius:50%;background:var(--line-hi)}
+.bar em{margin-left:12px;font-style:normal;font-size:12px;color:var(--night-faint);background:var(--raised);padding:3px 12px;border-radius:6px}
+.app{display:grid;grid-template-columns:150px minmax(0,1fr)}
+.rail{border-right:1px solid var(--line);padding:20px 14px;font-size:12.5px;color:var(--night-muted)}
+.rail div{display:flex;gap:9px;align-items:center;padding:5px 0}
+.rail b{width:14px;height:14px;border-radius:50%;border:2px solid var(--line-hi);flex:none}
+.rail .d{color:var(--on-night)}.rail .d b{background:var(--ember);border-color:var(--ember)}
+.rail .c{color:var(--on-night);font-weight:650}.rail .c b{border-color:var(--ember);box-shadow:0 0 0 4px var(--ember-soft)}
+.pane{padding:24px 24px 22px}
+.pane h3{color:var(--on-night);font-size:19px;margin-bottom:4px}
+.pane>p{color:var(--night-muted);font-size:13.5px}
+.reason{margin:14px 0;padding:11px 13px;border-radius:10px;background:var(--signal-soft);border:1px solid rgba(96,165,250,.22);font-size:13px;color:#cbd5e1;line-height:1.45}
+.reason strong{color:var(--signal)}
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.o{background:var(--raised);border:1px solid var(--line-hi);border-radius:11px;padding:13px;font-size:12px;color:var(--night-muted);line-height:1.45}
+.o.sel{border-color:var(--ember);box-shadow:0 0 0 3px var(--ember-soft)}
+.o .t{font-weight:700;font-size:13.5px;line-height:1.28;color:var(--on-night);margin:6px 0}
+.o .tag{display:inline-block;font-size:10.5px;font-weight:700;color:var(--ember);background:var(--ember-soft);padding:2px 7px;border-radius:5px}
+.acts{display:flex;gap:8px;margin-top:16px}
+.acts span{font-size:12.5px;font-weight:600;padding:8px 13px;border-radius:8px;border:1px solid var(--line-hi)}
+.acts span:first-child{background:var(--ember);border-color:var(--ember);color:var(--ink)}
+.note{margin-top:12px;font-size:11.5px;color:var(--night-faint)}
+
+/* what you get */
+.get{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px;border-top:1px solid var(--rule)}
+.get div{padding:24px 0;border-bottom:1px solid var(--rule)}
+.get h3{font-size:19px;margin-bottom:4px}
+.get p{font-size:16px}
+
+/* promise */
+.night{background:var(--night);color:var(--night-muted)}
+.night h2{color:#fff}
+.promise{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:48px}
+.promise h3{color:#fff;font-size:19px;margin-bottom:6px}
+
+/* pricing */
+.prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.price{background:#fff;border:1px solid var(--rule);border-radius:18px;padding:32px;display:flex;flex-direction:column;gap:10px}
+.price.main{border:2px solid var(--ink)}
+.price .what{font-weight:700;color:var(--ink)}
+.amt{font-weight:800;font-size:52px;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.amt small{font-weight:500;font-size:17px;letter-spacing:0;color:var(--muted)}
+.founding{font-weight:700;color:var(--ink);background:var(--ember-soft);border-radius:8px;padding:8px 12px;align-self:flex-start}
+
+/* closing */
+.close{text-align:center}
+.close h2{margin:0 auto 14px}
+.close .lede{max-width:32em;margin:0 auto 28px;font-size:18px}
+.close .slot{display:flex;flex-direction:column;align-items:center}
+.close .fine{margin-top:14px}
+
+footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted);padding-top:28px;padding-bottom:28px;border-top:1px solid var(--rule)}
+
+@media (max-width:900px){
+  .how{grid-template-columns:minmax(0,1fr)}
+  .promise,.prices,.get{grid-template-columns:minmax(0,1fr)}
+  .get{gap:0}
+  section.band{padding:72px 0}
+}
+@media (max-width:720px){
+  .stage{height:auto;display:flex;flex-direction:column;align-items:center;gap:20px;margin-top:44px}
+  .doc,.phone,.flow,.cap,.example{position:relative;left:auto;right:auto;top:auto;bottom:auto;transform:none}
+  .doc{width:100%;max-width:300px;height:auto;padding-bottom:36px;transform:rotate(-2deg)}
+  .doc{order:1}.cap.l{order:2}.flow{order:3}.example{order:4}.phone{order:5}.cap.r{order:6}
+  .flow{gap:8px}
+  .flow svg{display:none}
+  .flow::before{content:'';width:4px;height:40px;border-radius:2px;background:var(--ember)}
+  .example{align-self:center;margin-bottom:-28px}
+  .cap.r{width:auto}
+  .app{grid-template-columns:minmax(0,1fr)}
+  .rail{display:none}
+  .opts{grid-template-columns:minmax(0,1fr)}
+}
 </style>
 </head>
 <body>
 
 <header>
-<div class="w">
-<a class="logo" href="#top" aria-label="I Made It by Streak, home"><b>I Made It</b><span>by Streak</span></a>
-<a class="pill" href="#join">Join the waitlist</a>
+<div class="w top">
+<a class="brand" href="#top" aria-label="I Made It by Streak, home">I Made It<i>.</i><small>by Streak</small></a>
+<a class="nav-cta" href="#join">Join the waitlist</a>
 </div>
 </header>
 
 <main id="top">
 <section class="hero">
-<div class="w stack">
-<div class="tag">A hand up, not a handout</div>
-<h1 class="disp">You built the career. Now launch the brand.</h1>
-<p class="lede">Answer a guided interview about your real experience. The AI turns it into a personal website, a one-page résumé, and a step-by-step path to publish it free. You do the work, you keep the site, and on launch day you get to say it: I made it.</p>
-<a class="go" href="#join">Join the waitlist</a>
-<p class="small">Free to join. Five beta testers will build their site free in exchange for honest feedback.</p>
-</div>
-</section>
-
-<section style="background:#fff">
-<div class="w stack" style="gap:40px">
-<h2 class="disp big">Three steps. One afternoon.</h2>
-<div class="g3">
-<div class="stack step"><div class="num">01</div><h3 style="font-size:22px">Tell your story</h3><p>The AI interviews you one question at a time and pulls out the skills, results, and proof you already have.</p></div>
-<div class="stack step"><div class="num">02</div><h3 style="font-size:22px">Pick your look</h3><p>Every design choice comes as three options and a recommendation. You choose, edit, or ask for three more.</p></div>
-<div class="stack step"><div class="num">03</div><h3 style="font-size:22px">Launch your brand</h3><p>Follow the step-by-step guide to publish free on GitHub Pages. Check it on your phone, and you're live.</p></div>
-</div>
-</div>
-</section>
-
-<section>
-<div class="w stack" style="gap:32px">
-<h2 class="disp big">What you walk away with</h2>
-<div class="g4">
-<div class="stack card"><h3>Your own website</h3><p>Built from your real experience, works on any phone.</p></div>
-<div class="stack card"><h3>A one-page résumé</h3><p>A matching PDF, ready to send.</p></div>
-<div class="stack card"><h3>Free hosting</h3><p>No monthly fee. The files are yours forever.</p></div>
-<div class="stack card"><h3>Your launch post</h3><p>An "I made it" card to share on LinkedIn.</p></div>
-</div>
-</div>
-</section>
-
-<section class="dark">
-<div class="w stack" style="gap:40px">
-<h2 class="disp">A hand up, <span style="color:var(--accent)">not a handout.</span></h2>
-<div class="g3">
-<div class="stack" style="gap:8px"><h3>Your facts only</h3><p>The AI never invents a result, a title, or a quote. A missing fact becomes a question.</p></div>
-<div class="stack" style="gap:8px"><h3>You approve everything</h3><p>Nothing goes on your site until you've checked it.</p></div>
-<div class="stack" style="gap:8px"><h3>It's yours</h3><p>You own the files and the address. Walk away any time and keep everything.</p></div>
-</div>
-</div>
-</section>
-
-<section>
-<div class="w stack" style="gap:32px">
-<div class="stack" style="gap:8px">
-<h2 class="disp big">Simple pricing at launch</h2>
-<p style="color:var(--muted)">Waitlist members hear first when the 10 founding spots open.</p>
-</div>
-<div class="g2">
-<div class="stack price main"><div style="font-weight:700;color:var(--ink)">Build your site</div><div class="amt">$149 <small>one time</small></div><p>The guided interview, your site, your résumé PDF, the publishing guide, and 3 months of the Toolbox included.</p><p style="font-weight:700;color:var(--ink)">Founding price: $99 for the first 10 customers.</p></div>
-<div class="stack price"><div style="font-weight:700;color:var(--ink)">The Toolbox (optional)</div><div class="amt">$39 <small>a year, or $4 a month</small></div><p>Keep your site current: new job, new results, a yearly career refresh. Your site stays live with or without it.</p></div>
-</div>
-</div>
-</section>
-
-<section id="join" class="cta">
-<div class="w stack" style="gap:24px">
-<h2 class="disp">Your next chapter starts here.</h2>
+<div class="w">
+<h1>Paste your résumé. Leave with a website.</h1>
+<p class="lede">Guided questions pull out the wins your résumé buries. You pick from three custom designs and publish it free, on a site nobody else has.</p>
 <div class="slot">
 <form class="frm" data-waitlist novalidate>
-<label class="sr" for="em">Email address</label>
-<input id="em" name="email" type="email" required autocomplete="email" placeholder="you@email.com">
+<label class="sr" for="em1">Email address</label>
+<input id="em1" name="email" type="email" required autocomplete="email" placeholder="you@email.com">
 <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 <button type="submit">Join the waitlist</button>
 </form>
 <p class="err" role="alert" hidden></p>
 </div>
-<p style="font-size:14px;color:var(--ink);max-width:40rem">By joining, you agree we may email you about I Made It. No spam, and you can opt out any time.</p>
+<p class="fine">Free to join. Waitlist members get first access and founding pricing.</p>
+
+<div class="stage" aria-hidden="true">
+<div class="doc">
+<div class="n">Jordan Reyes</div><div class="l" style="width:58%"></div>
+<div class="h">EXPERIENCE</div><div class="l"></div><div class="l hl" style="width:84%"></div><div class="l" style="width:70%"></div><div class="l"></div>
+<div class="h">RESULTS</div><div class="l hl" style="width:74%"></div><div class="l" style="width:90%"></div><div class="l" style="width:55%"></div>
+<div class="h">SKILLS</div><div class="l" style="width:80%"></div><div class="l" style="width:64%"></div>
+</div>
+<div class="flow">
+<svg width="120" height="20" viewBox="0 0 120 20"><path d="M2 10h104" stroke="#f97316" stroke-width="4" stroke-linecap="round"/><path d="M100 2l14 8-14 8z" fill="#f97316"/></svg>
+<span>11 guided steps</span>
+</div>
+<span class="example">Example site</span>
+<div class="phone"><div class="scr">
+<div class="av"></div>
+<h4>I took forecasts from 30% off to within 8%.</h4>
+<p>Jordan Reyes builds revenue plans sales leaders trust. Director-level RevOps, Tampa.</p>
+<span class="b">Get in touch</span>
+<div class="k"><b>8%</b>forecast accuracy, six quarters running</div>
+</div></div>
+<span class="cap l">Your résumé, as it is today</span>
+<span class="cap r">Your site, live on your phone</span>
+</div>
+</div>
+</section>
+
+<section class="band white" id="how">
+<div class="w how">
+<div>
+<div class="intro" style="margin-bottom:36px">
+<h2>You bring the facts. It does the writing and design.</h2>
+</div>
+<ol class="steps">
+<li><span class="n">1</span><div><h3>Answer guided questions</h3><p>Paste your résumé or LinkedIn, then answer a short set of questions about your goals, your wins, and what must stay private.</p></div></li>
+<li><span class="n">2</span><div><h3>Pick from three, every time</h3><p>Headlines, copy, and design each come as three options with a recommendation. Choose one, edit it, or ask for three more.</p></div></li>
+<li><span class="n">3</span><div><h3>Publish it free</h3><p>Download your site and follow the step-by-step guide to put it live on GitHub Pages, with help connecting your own domain.</p></div></li>
+</ol>
+</div>
+<div class="win" role="img" aria-label="The I Made It app showing three headline options with one recommended">
+<div class="bar"><span></span><span></span><span></span><em>I Made It</em></div>
+<div class="app">
+<div class="rail">
+<div class="d"><b></b>Your goal</div><div class="d"><b></b>Privacy</div><div class="d"><b></b>Your story</div><div class="d"><b></b>Skills</div><div class="d"><b></b>Confidentiality</div><div class="c"><b></b>Positioning</div><div><b></b>Proof</div><div><b></b>Site copy</div><div><b></b>Design</div><div><b></b>Build</div><div><b></b>Publish</div>
+</div>
+<div class="pane">
+<h3>Pick your headline</h3>
+<p>Three options written from your answers.</p>
+<div class="reason"><strong>Recommended: option 2.</strong> It leads with the forecast win and keeps your current employer unnamed.</div>
+<div class="opts">
+<div class="o"><div class="t">RevOps leader who turns messy pipelines into plans people trust</div>Broad and calm. Good if you're open to several roles.</div>
+<div class="o sel"><span class="tag">Recommended</span><div class="t">I took forecasts from 30% off to within 8%, six quarters running</div>Leads with proof. Strongest for director roles.</div>
+<div class="o"><div class="t">The operator sales leaders call before the board meeting</div>More personality. Works if you want to stand out.</div>
+</div>
+<div class="acts"><span>Use option 2</span><span>Show three more</span></div>
+<p class="note">Example answers shown. Your site is built only from what you tell it.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="w">
+<div class="intro"><h2>What you walk away with</h2></div>
+<div class="get">
+<div><h3>A one-of-a-kind website</h3><p>Designed from your answers, never a template. Checked to work on any phone.</p></div>
+<div><h3>A matching résumé page</h3><p>Built from the same facts. Open it and save it as a PDF.</p></div>
+<div><h3>Free hosting</h3><p>No monthly bill. You download the files, and they're yours to keep.</p></div>
+<div><h3>Help with your own domain</h3><p>A walkthrough for buying and connecting a name like yourname.com.</p></div>
+</div>
+</div>
+</section>
+
+<section class="band night">
+<div class="w">
+<h2>A hand up, not a handout.</h2>
+<div class="promise">
+<div><h3>Your facts only</h3><p>Nothing is invented: no results, titles, or quotes. A missing fact becomes a question.</p></div>
+<div><h3>You approve everything</h3><p>Nothing goes on your site until you've checked it.</p></div>
+<div><h3>It's yours</h3><p>You own the files and the address. Walk away any time and keep everything.</p></div>
+</div>
+</div>
+</section>
+
+<section class="band">
+<div class="w">
+<div class="intro"><h2>Simple pricing at launch</h2><p>Waitlist members hear first when the 10 founding spots open.</p></div>
+<div class="prices">
+<div class="price main"><div class="what">Build your site</div><div class="amt">$149 <small>one time</small></div><p>The guided questions, your custom site, your résumé page, the publishing guide, and 3 months of the Toolbox included.</p><p class="founding">Founding price: $99 for the first 10 customers</p></div>
+<div class="price"><div class="what">The Toolbox (optional)</div><div class="amt">$39 <small>a year, or $4 a month</small></div><p>Keep your site current: a new job, new results, a yearly career refresh. Your site stays live with or without it.</p></div>
+</div>
+</div>
+</section>
+
+<section class="band white close" id="join">
+<div class="w">
+<h2>Your next chapter starts here.</h2>
+<p class="lede">Join the waitlist for first access, founding pricing, and a shot at one of five free beta builds.</p>
+<div class="slot">
+<form class="frm" data-waitlist novalidate>
+<label class="sr" for="em2">Email address</label>
+<input id="em2" name="email" type="email" required autocomplete="email" placeholder="you@email.com">
+<input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button type="submit">Join the waitlist</button>
+</form>
+<p class="err" role="alert" hidden></p>
+</div>
+<p class="fine">By joining, you agree we may email you about I Made It. No spam, and you can opt out any time.</p>
 </div>
 </section>
 </main>
@@ -160,7 +319,7 @@ footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;fon
 <footer>
 <div class="w">
 <span>I Made It by Streak Business Solutions</span>
-<span>We only use your contact details for I Made It updates. Never sold.</span>
+<span>We only use your email for I Made It updates. Never sold.</span>
 </div>
 </footer>
 
