@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Same visibility as the other I Made It pages: reachable by link, kept out of search engines until launch. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Unsubscribe | I Made It by Streak</title>
+<meta name="theme-color" content="#eef1f6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#eef1f6;--ink:#0b0e15;--body:#3b4252;--muted:#5e6878;--rule:#d9dee8;--ember:#f97316}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--body);font:17px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:780px;margin:0 auto;padding:0 max(18px,4vw)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0}
+.brand{font-weight:800;font-size:20px;letter-spacing:-.03em;color:var(--ink);text-decoration:none}
+.brand i{font-style:normal;color:var(--ember)}
+.brand small{font-weight:500;font-size:13px;letter-spacing:0;color:var(--muted);margin-left:6px}
+main{background:#fff;border:1px solid var(--rule);border-radius:18px;padding:clamp(22px,5vw,48px);margin:8px 0 40px}
+h1{color:var(--ink);font-size:clamp(30px,5vw,42px);line-height:1.1;letter-spacing:-.04em;margin:0 0 12px}
+h2{color:var(--ink);font-size:21px;letter-spacing:-.02em;margin:34px 0 10px;padding-top:18px;border-top:1px solid var(--rule)}
+p,ul{margin:0 0 14px}
+li{margin:0 0 8px}
+strong{color:var(--ink)}
+a{color:#b4530e}
+:focus-visible{outline:3px solid var(--ember);outline-offset:3px;border-radius:6px}
+.tbl{overflow-x:auto;margin:0 0 16px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--rule)}
+th{color:var(--ink);background:var(--paper)}
+footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted);padding-bottom:32px}
+</style>
+.frm{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.frm input{flex:1 1 240px;font:inherit;padding:12px 14px;border:1px solid var(--rule);border-radius:10px}
+.frm button{font:inherit;font-weight:700;padding:12px 20px;border:0;border-radius:10px;background:var(--ink);color:#fff;cursor:pointer}
+.frm button:disabled{opacity:.6;cursor:default}
+.err{color:#b42318;margin:0 0 10px}
+.done{background:#ecfdf3;border:1px solid #abefc6;border-radius:12px;padding:14px 16px;color:#067647}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="w">
+<header class="top"><a class="brand" href="index.html">I Made It<i>.</i><small>by Streak</small></a></header>
+<main>
+<h1>Unsubscribe from I Made It emails</h1>
+<p>Enter the email address you joined the waitlist with. We'll stop sending you I Made It marketing emails, and we'll stop within 10 business days, usually much sooner.</p>
+<p>You'll still get sign-in links and messages about purchases you made.</p>
+<form class="frm" id="unsub" novalidate>
+<label class="hide" for="email">Email</label>
+<input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+<input name="website" type="text" tabindex="-1" autocomplete="off" class="hide" aria-hidden="true">
+<button type="submit">Unsubscribe</button>
+</form>
+<p class="err" id="err" hidden></p>
+<div id="slot"></div>
+<p>Changed your mind? Email <a href="mailto:hello@streakbizsolutions.com">hello@streakbizsolutions.com</a> and we'll add you back only if you ask.</p>
+</main></div>
+<footer><div class="w"><span>I Made It by Streak Business Solutions</span><span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="mailto:hello@streakbizsolutions.com">hello@streakbizsolutions.com</a></span></div></footer>
+<script>
+/* Sends the opt-out to the same "IMadeIt Waitlist" Apps Script web app used by the signup form.
+   The request is no-cors, so the browser can't confirm the sheet was updated. */
+var SHEET_URL = 'https://script.google.com/macros/s/AKfycbwgcQapCU-s5IZKC7UWLesxaByA_dXaeEqZpMlcTRPlZgKdO-Rgxxr9OruhwpZUtowZ/exec';
+(function () {
+  var form = document.getElementById('unsub'), err = document.getElementById('err'), slot = document.getElementById('slot');
+  var p = new URLSearchParams(location.search);
+  if (p.get('email')) form.email.value = p.get('email');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = form.email.value.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'Please enter a valid email address.'; err.hidden = false; form.email.focus(); return; }
+    err.hidden = true;
+    if (form.website.value) { show(); return; }
+    var btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Working…';
+    var body = new URLSearchParams({ action: 'optout', email: email });
+    fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body: body })
+      .then(show)
+      .catch(function () { btn.disabled = false; btn.textContent = 'Unsubscribe'; err.textContent = "We couldn't send that just now. Please try again, or email hello@streakbizsolutions.com."; err.hidden = false; });
+  });
+  function show() {
+    form.classList.add('hide');
+    var m = document.createElement('div'); m.className = 'done'; m.setAttribute('role', 'status');
+    m.textContent = "You're unsubscribed from I Made It marketing emails.";
+    slot.appendChild(m);
+  }
+})();
+</script>
+</body>
+</html>
