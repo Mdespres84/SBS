@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Streak Business Solutions — RevOps Consulting</title>
-  <meta name="description" content="Fractional RevOps and AI setup for growing businesses. Pipeline architecture, reporting, forecasting, CRM strategy, AI chatbots, automation, and Google Business Profile management." />
+  <title>Streak Business Solutions — AI Setup &amp; Fractional RevOps</title>
+  <meta name="description" content="Practical AI setup for growing businesses in Tampa Bay and beyond: AI chatbots, automated follow-ups, Google Business Profile management, tool integrations and team training. Fractional RevOps when you need it." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -12,18 +12,21 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0b0e15;
-      --bg2: #10141e;
-      --bg3: #161b28;
-      --border: #1e2436;
+      --bg: #eef1f6;
+      --bg2: #ffffff;
+      --bg3: #f3f5f9;
+      --border: #d9dee8;
+      --ink: #0b0e15;
+      --body: #3b4252;
+      --night: #0b0e15;
       --accent: #f97316;
       --accent2: #fb923c;
       --blue: #3b82f6;
       --blue2: #60a5fa;
       --green: #22c55e;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --card: #0f1320;
+      --text: #0b0e15;
+      --muted: #5e6878;
+      --card: #ffffff;
     }
 
     html { scroll-behavior: smooth; }
@@ -531,16 +534,105 @@
       .trust-bar { gap: 20px; }
       .pricing-tab { font-size: 13px; padding: 7px 14px; }
     }
+
+    /* ══════════ CIRCUIT THEME (draft) ══════════ */
+    #circuit-bg { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+    nav { background: rgba(11,14,21,.78); }
+    .band { background: linear-gradient(180deg, rgba(16,20,30,0) 0%, rgba(16,20,30,.55) 14%, rgba(16,20,30,.55) 86%, rgba(16,20,30,0) 100%); }
+    .trust-bar { background: rgba(16,20,30,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+
+    /* hero accents */
+    .hero-badge { gap: 10px; }
+    .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue2); box-shadow: 0 0 0 0 rgba(96,165,250,.6); animation: pulse 2.4s ease-out infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(96,165,250,.55); } 70% { box-shadow: 0 0 0 10px rgba(96,165,250,0); } 100% { box-shadow: 0 0 0 0 rgba(96,165,250,0); } }
+    .hero h1 em { background: linear-gradient(90deg, #f97316, #fbbf24); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* section labels read like a trace leading into a node */
+    .section-label { display: inline-flex; align-items: center; gap: 10px; }
+    .section-label::before { content: ''; width: 22px; height: 1.5px; background: linear-gradient(90deg, transparent, currentColor); }
+    .section-label::after { content: ''; width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid currentColor; order: -1; display: none; }
+    .section-label[style*="center"] { display: flex; justify-content: center; }
+
+    /* glass cards that float */
+    .problem-card, .hourly-card, .retainer-card, .table-wrap, .cta-section, .table-note {
+      background: rgba(15,19,32,.72);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 14px 34px -16px rgba(0,0,0,.75);
+    }
+    .float { animation: floaty 7s ease-in-out infinite; will-change: transform; transition: border-color .25s, box-shadow .25s; }
+    .table-wrap.float, .cta-section.float { animation-name: floaty-sm; }
+    @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    @keyframes floaty-sm { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    .float:hover { animation-play-state: paused; border-color: rgba(96,165,250,.45); box-shadow: 0 20px 44px -16px rgba(0,0,0,.8), 0 0 26px -8px rgba(59,130,246,.45); }
+
+    /* service + AI cards get a small trace-and-node mark */
+    .svc-card, .ai-card { position: relative; }
+    .svc-card { border-left-color: var(--blue); }
+    .ai-card { border-left-color: var(--accent); }
+    .svc-card::before, .ai-card::before { content: ''; position: absolute; top: 20px; right: 20px; width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid rgba(96,165,250,.6); }
+    .svc-card::after, .ai-card::after { content: ''; position: absolute; top: 23px; right: 28px; width: 34px; height: 1.5px; background: linear-gradient(90deg, transparent, rgba(96,165,250,.5)); }
+    .ai-card::before { border-color: rgba(249,115,22,.65); }
+    .ai-card::after { background: linear-gradient(90deg, transparent, rgba(249,115,22,.55)); }
+    .svc-card h3, .ai-card h3 { padding-right: 56px; }
+
+    /* scroll reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .float, .pulse-dot { animation: none !important; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+    /* ══════════ LIGHT THEME (matches I Made It) ══════════ */
+    body { color: var(--body); }
+    body::before { background: radial-gradient(ellipse, rgba(59,130,246,.10) 0%, transparent 65%); }
+    body::after { background: radial-gradient(ellipse, rgba(249,115,22,.10) 0%, transparent 65%); }
+    nav { background: rgba(238,241,246,.84); }
+    .nav-links a:hover { background: rgba(11,14,21,.05); }
+    .nav-links .nav-cta { background: var(--ink); color: #fff !important; }
+    .nav-links .nav-cta:hover { background: #1e2436; }
+    .btn-primary { color: var(--ink); }
+    .btn-ghost { background: rgba(255,255,255,.6); }
+    .hero-badge { background: rgba(59,130,246,.10); border-color: rgba(59,130,246,.28); color: #2563eb; }
+    .pulse-dot { background: #3b82f6; }
+    .hero h1 { letter-spacing: -.045em; color: var(--ink); }
+    .hero h1 em { background: linear-gradient(90deg, #f97316, #ea580c); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p { color: var(--body); }
+    .section-title { color: var(--ink); letter-spacing: -.035em; }
+    .band { background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.62) 14%, rgba(255,255,255,.62) 86%, rgba(255,255,255,0) 100%); }
+    .trust-bar { background: rgba(255,255,255,.66); }
+    .problem-card, .hourly-card, .retainer-card, .table-wrap, .table-note {
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 16px 36px -20px rgba(15,23,42,.28), 0 2px 6px -2px rgba(15,23,42,.06);
+    }
+    .float:hover { border-color: rgba(59,130,246,.45); box-shadow: 0 22px 46px -18px rgba(15,23,42,.32), 0 0 0 4px rgba(59,130,246,.08); }
+    .svc-card::before { border-color: rgba(37,99,235,.6); }
+    .svc-card::after { background: linear-gradient(90deg, transparent, rgba(37,99,235,.5)); }
+    .pricing-tab { background: rgba(255,255,255,.7); }
+    .pricing-tab.active, .pricing-tab:hover { color: var(--ink); }
+    .featured-badge { color: var(--ink); }
+    .fn-table tr:nth-child(even) td { background: rgba(11,14,21,.025); }
+    .retainer-hours { color: #2563eb; }
+    /* closing band goes dark, like I Made It's promise band */
+    #contact { background: var(--night); }
+    .cta-section { background: linear-gradient(135deg, rgba(249,115,22,.10) 0%, rgba(59,130,246,.10) 100%); border-color: #2a3249; box-shadow: none; }
+    .cta-section h2 { color: #fff; }
+    .cta-section p { color: #94a3b8; }
+    .cta-section .section-label { color: var(--accent); }
+    .cta-section .btn-ghost { background: transparent; color: #f1f5f9; border-color: #2a3249; }
+    nav.footer-links { position: static; height: auto; padding: 0; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; }
+    .footer-logo { color: var(--ink); }
   </style>
 </head>
 <body>
+<canvas id="circuit-bg" aria-hidden="true"></canvas>
 
 <!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">Streak<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#what-we-build">Services</a></li>
-    <li><a href="#ai-setup">AI Setup</a></li>
+    <li><a href="#ai-setup">AI Services</a></li>
+    <li class="nav-hide-sm"><a href="#what-we-build">RevOps</a></li>
     <li><a href="/imadeit/">I Made It</a></li>
     <li class="nav-hide-sm"><a href="#pricing">Pricing</a></li>
     <li><a href="#contact" class="nav-cta">Get Started</a></li>
@@ -549,21 +641,21 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">📊 Fractional RevOps &amp; AI Setup · Tampa, FL</div>
-  <h1>Your Revenue Engine<br/>Is <em>Broken.</em><br/>Let's Fix It.</h1>
-  <p>No dashboards. No pipeline visibility. No forecast. We build the RevOps infrastructure you need in the CRM you already use, without the cost of a full-time hire.</p>
+  <div class="hero-badge"><span class="pulse-dot"></span>AI Setup &amp; Fractional RevOps · Tampa, FL</div>
+  <h1>Put AI to Work<br/><em>in Your Business.</em></h1>
+  <p>Chatbots that answer customers, follow-ups that send themselves, and tools that finally talk to each other. We set up practical AI around how you already work, then train your team to use it.</p>
   <div class="hero-ctas">
-    <a href="#contact" class="btn-primary">Start With a Free Discovery Call</a>
-    <a href="#pricing" class="btn-ghost">See Pricing</a>
+    <a href="mailto:hello@streakbizsolutions.com?subject=AI%20setup%20for%20my%20business" class="btn-primary">Book a Free AI Setup Call</a>
+    <a href="#ai-setup" class="btn-ghost">See What We Set Up</a>
   </div>
 </section>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-item"><span>✓</span> No Long-Term Contracts</div>
-  <div class="trust-item"><span>✓</span> Built from Scratch</div>
-  <div class="trust-item"><span>✓</span> Tampa, FL Based</div>
-  <div class="trust-item"><span>✓</span> RevOps Strategies</div>
+  <div class="trust-item"><span>✓</span> Working Systems, Not Slide Decks</div>
+  <div class="trust-item"><span>✓</span> Built Around Your Tools</div>
+  <div class="trust-item"><span>✓</span> On-Site Across Tampa Bay</div>
 </div>
 
 <!-- THE PROBLEM -->
@@ -572,104 +664,67 @@
     <div class="section-header">
       <div class="section-label">The Problem</div>
       <h2 class="section-title">Sound Familiar?</h2>
-      <p class="section-sub">Most growing companies hit the same wall. The revenue motion exists — but nobody can see it, measure it, or trust it.</p>
+      <p class="section-sub">Most small and growing businesses lose hours every week to work a well-set-up AI tool could handle.</p>
     </div>
     <div class="problem-grid">
       <div class="problem-card">
-        <h3>No Dashboard Exists</h3>
-        <p>Leadership makes decisions based on gut feel because there's no real-time view of pipeline, revenue, or forecast.</p>
+        <h3>Leads Wait Hours for a Reply</h3>
+        <p>A customer asks a question at 9 p.m. and hears back the next afternoon, if at all. By then they've called someone else.</p>
       </div>
       <div class="problem-card">
-        <h3>Your CRM Is a Mess</h3>
-        <p>Duplicate contacts, blank fields, inconsistent pipeline stages. Nobody trusts the data because nobody owns it.</p>
+        <h3>Follow-Ups Slip Through</h3>
+        <p>Quotes go unchased, appointments get missed, and review requests never go out because nobody had time to send them.</p>
       </div>
       <div class="problem-card">
-        <h3>Reporting Takes Hours</h3>
-        <p>Every Monday someone exports CSVs and patches them together in a spreadsheet. That's not a system — that's a liability.</p>
+        <h3>Your Team Is Copy-Pasting All Day</h3>
+        <p>The same information gets typed into the CRM, the inbox, the calendar and a spreadsheet. Every copy is a chance for a mistake.</p>
       </div>
       <div class="problem-card">
-        <h3>Marketing and Sales Don't Align</h3>
-        <p>Marketing measures clicks. Sales measures calls. Nobody can tie activity to closed revenue because the attribution doesn't exist.</p>
+        <h3>Reviews and Listings Go Stale</h3>
+        <p>Your Google profile shows old hours, unanswered reviews and no recent posts, and customers notice.</p>
       </div>
       <div class="problem-card">
-        <h3>No Forecast Process</h3>
-        <p>Month-end surprises, gut-check numbers, and no visibility into gap-to-quota until it's too late to course correct.</p>
+        <h3>Nobody Knows Where to Start With AI</h3>
+        <p>Everyone hears AI can help, but no one has time to figure out which tools fit or how to use them safely.</p>
       </div>
       <div class="problem-card">
-        <h3>Leads Fall Through the Cracks</h3>
-        <p>No routing, no automation, no follow-up tasks. Leads sit unassigned for days while competitors answer the phone.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT WE BUILD -->
-<section class="section" id="what-we-build" style="background: var(--bg2);">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-label">What We Build</div>
-      <h2 class="section-title">Pick What You Need, or Bundle It</h2>
-      <p class="section-sub">Every service is available on its own or as a package, in whatever CRM you run. No fixed playbook: we scope each engagement together in a conversation.</p>
-    </div>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <h3>CRM &amp; Pipeline Foundation</h3>
-        <p>Standardized pipeline stages with written definitions, required fields, and lifecycle mapping. Duplicate merges and data cleanup so your team stops second-guessing the numbers.</p>
-      </div>
-      <div class="problem-card">
-        <h3>Reporting &amp; Dashboards</h3>
-        <p>Dashboards built for the people who use them: leadership, sales managers, marketing, and reps. Real-time visibility instead of Monday-morning spreadsheets.</p>
-      </div>
-      <div class="problem-card">
-        <h3>Forecasting &amp; Attribution</h3>
-        <p>A forecast your leadership can trust, with gap-to-quota in plain view. Revenue tied back to source, campaign, and channel so spend decisions rest on data.</p>
-      </div>
-      <div class="problem-card">
-        <h3>Lead Lifecycle &amp; Routing</h3>
-        <p>Clear lifecycle stages, automatic routing, and follow-up tasks so no lead sits unassigned while a competitor answers the phone.</p>
-      </div>
-      <div class="problem-card">
-        <h3>Sales Process Design</h3>
-        <p>A documented sales process your reps can follow, built around how your team actually sells.</p>
-      </div>
-      <div class="problem-card">
-        <h3>Governance &amp; Documentation</h3>
-        <p>Every process, definition, and workflow written down in a RunBook your team owns, so a future in-house hire walks into a system, not a mess.</p>
+        <h3>The Same Questions, Over and Over</h3>
+        <p>Hours, pricing, availability, directions. Your team answers them all day instead of doing the work only they can do.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- AI SETUP -->
-<section class="section" id="ai-setup">
+<section class="section band" id="ai-setup">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-label">AI Setup</div>
+      <div class="section-label">AI Services</div>
       <h2 class="section-title">Practical AI for Your Business</h2>
       <p class="section-sub">We set up AI tools that fit how you already work, connect them to the software you use, and train your team. Remote by default, with on-site help available for Tampa Bay businesses. You get working systems, not a slide deck.</p>
     </div>
     <div class="problem-grid">
-      <div class="problem-card">
+      <div class="problem-card ai-card">
         <h3>AI Chatbots</h3>
         <p>Answer customer questions on your website around the clock, capture leads, and hand off to your team when a person is needed.</p>
       </div>
-      <div class="problem-card">
+      <div class="problem-card ai-card">
         <h3>Automated Follow-Ups</h3>
         <p>Quote follow-ups, appointment reminders, and review requests that go out on time without anyone remembering to send them.</p>
       </div>
-      <div class="problem-card">
+      <div class="problem-card ai-card">
         <h3>Google Business Profile Management</h3>
         <p>Review responses, regular posts, accurate hours and services, and a monthly report on how customers find you.</p>
       </div>
-      <div class="problem-card">
+      <div class="problem-card ai-card">
         <h3>AI Training for Your Team</h3>
         <p>Hands-on sessions so your people use AI for email, writing, and research safely and well.</p>
       </div>
-      <div class="problem-card">
+      <div class="problem-card ai-card">
         <h3>Connect Your Tools</h3>
         <p>Link AI to your CRM, inbox, calendar, and forms so information moves on its own instead of by copy and paste.</p>
       </div>
-      <div class="problem-card">
+      <div class="problem-card ai-card">
         <h3>Support After Launch</h3>
         <p>We monitor, fix, and improve what we set up so it keeps working as your business changes.</p>
       </div>
@@ -680,13 +735,50 @@
   </div>
 </section>
 
+<!-- WHAT WE BUILD -->
+<section class="section" id="what-we-build">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Also From Streak · RevOps</div>
+      <h2 class="section-title">Fractional RevOps, When You're Ready</h2>
+      <p class="section-sub">Fifteen years of revenue operations, available on its own or as a package, in whatever CRM you run. No fixed playbook: we scope each engagement together in a conversation.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card svc-card">
+        <h3>CRM &amp; Pipeline Foundation</h3>
+        <p>Standardized pipeline stages with written definitions, required fields, and lifecycle mapping. Duplicate merges and data cleanup so your team stops second-guessing the numbers.</p>
+      </div>
+      <div class="problem-card svc-card">
+        <h3>Reporting &amp; Dashboards</h3>
+        <p>Dashboards built for the people who use them: leadership, sales managers, marketing, and reps. Real-time visibility instead of Monday-morning spreadsheets.</p>
+      </div>
+      <div class="problem-card svc-card">
+        <h3>Forecasting &amp; Attribution</h3>
+        <p>A forecast your leadership can trust, with gap-to-quota in plain view. Revenue tied back to source, campaign, and channel so spend decisions rest on data.</p>
+      </div>
+      <div class="problem-card svc-card">
+        <h3>Lead Lifecycle &amp; Routing</h3>
+        <p>Clear lifecycle stages, automatic routing, and follow-up tasks so no lead sits unassigned while a competitor answers the phone.</p>
+      </div>
+      <div class="problem-card svc-card">
+        <h3>Sales Process Design</h3>
+        <p>A documented sales process your reps can follow, built around how your team actually sells.</p>
+      </div>
+      <div class="problem-card svc-card">
+        <h3>Governance &amp; Documentation</h3>
+        <p>Every process, definition, and workflow written down in a RunBook your team owns, so a future in-house hire walks into a system, not a mess.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRICING -->
-<section class="section" id="pricing">
+<section class="section band" id="pricing">
   <div class="section-inner">
     <div class="section-header">
       <div class="section-label">Pricing</div>
-      <h2 class="section-title">Three Ways to Engage</h2>
-      <p class="section-sub">Use these as a starting point. Every engagement is a conversation first, and the final scope and price are set together.</p>
+      <h2 class="section-title">RevOps Engagements</h2>
+      <p class="section-sub">AI setup is scoped on a call. For RevOps work, use these as a starting point: every engagement is a conversation first, and the final scope and price are set together.</p>
     </div>
 
     <div class="pricing-tabs">
@@ -836,11 +928,11 @@
   <div class="section-inner">
     <div class="cta-section">
       <div class="section-label" style="text-align:center;">Ready to start?</div>
-      <h2>Let's Fix Your Revenue Operations</h2>
-      <p>Every engagement starts with a conversation. Tell us what's broken and we'll shape the work around it, one piece at a time or as a package. No long-term commitment required.</p>
+      <h2>Let's Put AI to Work for You</h2>
+      <p>Every engagement starts with a conversation. Tell us where the hours are going and we'll shape the work around it, one piece at a time or as a package. No long-term commitment required.</p>
       <div class="cta-options">
-        <a href="mailto:hello@streakbizsolutions.com" class="btn-primary">Book a Discovery Call</a>
-        <a href="mailto:hello@streakbizsolutions.com" class="btn-ghost">Send a Message</a>
+        <a href="mailto:hello@streakbizsolutions.com?subject=AI%20setup%20for%20my%20business" class="btn-primary">Book an AI Setup Call</a>
+        <a href="mailto:hello@streakbizsolutions.com?subject=RevOps%20question" class="btn-ghost">Ask About RevOps</a>
       </div>
     </div>
   </div>
@@ -849,10 +941,10 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Streak<span>.</span></div>
-  <div class="footer-tagline">Fractional RevOps &amp; AI Setup · Tampa, FL</div>
+  <div class="footer-tagline">AI Setup &amp; Fractional RevOps · Tampa, FL</div>
   <nav class="footer-links">
-    <a href="#what-we-build">Services</a>
-    <a href="#ai-setup">AI Setup</a>
+    <a href="#ai-setup">AI Services</a>
+    <a href="#what-we-build">RevOps</a>
     <a href="#pricing">Pricing</a>
     <a href="/imadeit/">I Made It</a>
     <a href="/imadeit/terms.html">Terms</a>
@@ -917,6 +1009,104 @@
     document.getElementById('panel-' + name).classList.add('active');
     btn.classList.add('active');
   }
+</script>
+
+<script>
+/* Circuit ghost background: faint PCB traces that ripple in and out */
+(function () {
+  const cvs = document.getElementById('circuit-bg'); if (!cvs) return;
+  const ctx = cvs.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const G = 28, D = [[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]];
+  let W, H, dpr, art, scratch, sctx, ripples = [], last = 0, nextSpawn = 0;
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  function build() {
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5); W = innerWidth; H = innerHeight;
+    cvs.width = W * dpr; cvs.height = H * dpr;
+    art = document.createElement('canvas'); art.width = cvs.width; art.height = cvs.height;
+    const a = art.getContext('2d'); a.scale(dpr, dpr);
+    a.strokeStyle = a.fillStyle = 'rgb(51,65,85)'; a.lineCap = 'round'; a.lineJoin = 'round';
+    const cols = Math.ceil(W / G) + 1, rows = Math.ceil(H / G) + 1, used = new Set(), k = (x, y) => x + ',' + y;
+    // chips with pins
+    const nChips = Math.max(2, Math.round(W * H / 200000));
+    a.lineWidth = 1.2;
+    for (let i = 0; i < nChips; i++) {
+      const cw = rnd(3, 6) | 0, ch = rnd(2, 4) | 0, cx = rnd(1, cols - cw - 1) | 0, cy = rnd(1, rows - ch - 1) | 0;
+      a.strokeRect(cx * G, cy * G, cw * G, ch * G);
+      for (let x = cx + 1; x < cx + cw; x++) { a.beginPath(); a.moveTo(x * G, cy * G); a.lineTo(x * G, cy * G - 7); a.moveTo(x * G, (cy + ch) * G); a.lineTo(x * G, (cy + ch) * G + 7); a.stroke(); }
+      for (let y = cy; y <= cy + ch; y++) for (let x = cx; x <= cx + cw; x++) used.add(k(x, y));
+    }
+    // traces: random walks on the grid with 45-degree bends, ending in via pads
+    const n = Math.round(W * H / 5000);
+    for (let t = 0; t < n; t++) {
+      let x = rnd(0, cols) | 0, y = rnd(0, rows) | 0, dir = ((Math.random() * 4) | 0) * 2;
+      if (used.has(k(x, y))) continue;
+      const pts = [[x, y]]; used.add(k(x, y));
+      const len = rnd(3, 16) | 0;
+      for (let s = 0; s < len; s++) {
+        if (s > 0 && Math.random() < .25) dir = (dir + (Math.random() < .5 ? 1 : 7)) % 8;
+        const nx = x + D[dir][0], ny = y + D[dir][1];
+        if (nx < 0 || ny < 0 || nx > cols || ny > rows || used.has(k(nx, ny))) break;
+        x = nx; y = ny; used.add(k(x, y)); pts.push([x, y]);
+      }
+      if (pts.length < 3) continue;
+      a.lineWidth = Math.random() < .15 ? 2 : 1;
+      a.beginPath(); a.moveTo(pts[0][0] * G, pts[0][1] * G);
+      pts.slice(1).forEach(p => a.lineTo(p[0] * G, p[1] * G)); a.stroke();
+      [pts[0], pts[pts.length - 1]].forEach(p => {
+        a.beginPath(); a.arc(p[0] * G, p[1] * G, 2.8, 0, Math.PI * 2); a.lineWidth = 1.2;
+        Math.random() < .35 ? a.fill() : a.stroke();
+      });
+    }
+    scratch = document.createElement('canvas'); scratch.width = cvs.width; scratch.height = cvs.height; sctx = scratch.getContext('2d');
+    if (reduce) { ctx.clearRect(0, 0, cvs.width, cvs.height); ctx.globalAlpha = .08; ctx.drawImage(art, 0, 0); }
+  }
+
+  function spawn(x, y) {
+    const maxR = Math.hypot(Math.max(x, W - x), Math.max(y, H - y));
+    ripples.push({ x, y, r: 0, speed: rnd(110, 190), max: maxR, band: rnd(90, 150), peak: rnd(.22, .32) });
+  }
+
+  function frame(now) {
+    const dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
+    if (now > nextSpawn && ripples.length < 3) { spawn(rnd(0, W), rnd(0, H)); nextSpawn = now + rnd(1800, 3200); }
+    ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.clearRect(0, 0, cvs.width, cvs.height);
+    ctx.globalAlpha = .045; ctx.drawImage(art, 0, 0);            // the always-there ghost
+    ripples.forEach(rp => {
+      rp.r += rp.speed * dt;
+      const fade = Math.max(0, 1 - rp.r / rp.max), inner = Math.max(0, rp.r - rp.band), outer = rp.r + rp.band;
+      sctx.globalCompositeOperation = 'source-over'; sctx.clearRect(0, 0, scratch.width, scratch.height); sctx.drawImage(art, 0, 0);
+      sctx.globalCompositeOperation = 'destination-in';
+      const g = sctx.createRadialGradient(rp.x * dpr, rp.y * dpr, inner * dpr, rp.x * dpr, rp.y * dpr, outer * dpr);
+      g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(.5, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+      sctx.fillStyle = g; sctx.fillRect(0, 0, scratch.width, scratch.height);
+      ctx.globalAlpha = rp.peak * fade; ctx.drawImage(scratch, 0, 0);
+    });
+    ripples = ripples.filter(rp => rp.r < rp.max);
+    requestAnimationFrame(frame);
+  }
+
+  build();
+  let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(build, 200); });
+  if (!reduce) {
+    addEventListener('pointerdown', e => { if (ripples.length < 4) spawn(e.clientX, e.clientY); });
+    spawn(W * .7, H * .3); requestAnimationFrame(frame);
+  }
+})();
+
+/* Floating cards + scroll reveal */
+(function () {
+  document.querySelectorAll('.problem-card, .hourly-card, .retainer-card, .table-wrap, .cta-section').forEach((el, i) => {
+    el.classList.add('float');
+    el.style.animationDelay = (-(i % 5) * 1.3) + 's';
+    el.style.animationDuration = (6.5 + (i % 3) * 1.2) + 's';
+  });
+  const els = document.querySelectorAll('.section-header, .problem-grid, .hourly-grid, .retainer-grid');
+  if (!('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  els.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+})();
 </script>
 
 </body>
