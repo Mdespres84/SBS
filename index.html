@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Streak Business Solutions — AI Setup &amp; Fractional RevOps</title>
-  <meta name="description" content="Practical AI setup for growing businesses in Tampa Bay and beyond: AI chatbots, automated follow-ups, Google Business Profile management, tool integrations and team training. Fractional RevOps when you need it." />
+  <title>Streak Business Solutions — AI Setup, Websites &amp; Fractional RevOps</title>
+  <meta name="description" content="Practical AI setup for growing businesses in Tampa Bay and beyond: AI chatbots, automated follow-ups, Google Business Profile management, tool integrations and team training. Custom websites and booking sites. Fractional RevOps when you need it." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%230b0e15%22/%3E%3Ctext x=%2214%22 y=%2246%22 font-family=%22Arial,sans-serif%22 font-weight=%22900%22 font-size=%2240%22 fill=%22%23fff%22%3ES%3C/text%3E%3Ccircle cx=%2248%22 cy=%2243%22 r=%225%22 fill=%22%23f97316%22/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -520,7 +521,7 @@
     .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 24px; flex-wrap: wrap; }
     .footer-links a { font-size: 14px; color: var(--muted); text-decoration: none; transition: color .2s; }
     .footer-links a:hover { color: var(--accent); }
-    .footer-copy { font-size: 13px; color: var(--muted); opacity: .6; }
+    .footer-copy { font-size: 13px; color: var(--muted); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -536,7 +537,7 @@
     }
 
     /* ══════════ CIRCUIT THEME (draft) ══════════ */
-    #circuit-bg { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+    #circuit-bg, #circuit-fx { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
     nav { background: rgba(11,14,21,.78); }
     .band { background: linear-gradient(180deg, rgba(16,20,30,0) 0%, rgba(16,20,30,.55) 14%, rgba(16,20,30,.55) 86%, rgba(16,20,30,0) 100%); }
     .trust-bar { background: rgba(16,20,30,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
@@ -622,6 +623,91 @@
     .cta-section .btn-ghost { background: transparent; color: #f1f5f9; border-color: #2a3249; }
     nav.footer-links { position: static; height: auto; padding: 0; background: none; border: 0; backdrop-filter: none; -webkit-backdrop-filter: none; }
     .footer-logo { color: var(--ink); }
+    .recent-work { margin-top: 36px; text-align: center; }
+    .recent-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .recent-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .recent-links a { display: inline-flex; flex-direction: column; gap: 2px; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,.86); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; transition: border-color .2s, transform .2s; }
+    .recent-links a span { font-weight: 400; font-size: 13px; color: var(--muted); }
+    .recent-links a:hover { border-color: rgba(59,130,246,.5); transform: translateY(-2px); }
+    .recent-note { margin-top: 18px; font-size: 14px; color: var(--muted); }
+    .recent-note a { color: #2563eb; font-weight: 600; }
+    /* ══════════ SHOWCASE FEATURES ══════════ */
+    /* rotating headline */
+    .rot-word { white-space: nowrap; }
+    .caret { display: inline-block; width: .06em; height: .82em; margin-left: .06em; vertical-align: -.04em; background: #f97316; border-radius: 2px; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* floating now uses the translate property so tilt can own transform */
+    @keyframes floaty { 0%, 100% { translate: 0 0; } 50% { translate: 0 -9px; } }
+    @keyframes floaty-sm { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+
+    /* tilt + glare */
+    .tilt { position: relative; transition: transform .35s cubic-bezier(.2,.8,.2,1), border-color .25s, box-shadow .25s; }
+    .tilt.tilting { transition: transform .08s linear, border-color .25s, box-shadow .25s; }
+    .glare { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+      background: radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.55), rgba(255,255,255,0) 40%); mix-blend-mode: soft-light; }
+    .glare::after { content: ''; position: absolute; inset: 0; border-radius: inherit;
+      background: radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(96,165,250,.16), rgba(96,165,250,0) 55%); }
+    .tilt.tilting .glare { opacity: 1; }
+
+    /* before / after slider */
+    .ba-wrap { max-width: 920px; margin: 8px auto 44px; }
+    .ba { position: relative; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; border: 1px solid var(--border);
+      box-shadow: 0 30px 60px -28px rgba(11,14,21,.45); background: #fff; container-type: inline-size; touch-action: pan-y; cursor: ew-resize; user-select: none; -webkit-user-select: none; }
+    .ba-pane { position: absolute; inset: 0; overflow: hidden; }
+    .ba-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+    .ba-line { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 1px rgba(11,14,21,.15), 0 0 18px rgba(249,115,22,.55); }
+    .ba-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 46px; height: 46px; border-radius: 50%; border: 2px solid #fff;
+      background: #f97316; color: #0b0e15; font: 800 20px/1 Inter, sans-serif; display: flex; align-items: center; justify-content: center; gap: 4px; cursor: ew-resize; box-shadow: 0 8px 22px rgba(249,115,22,.5); }
+    .ba-handle:focus-visible { outline: 3px solid #3b82f6; outline-offset: 3px; }
+    .ba-tag { position: absolute; bottom: 12px; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: rgba(11,14,21,.72); color: #fff; pointer-events: none; }
+    .ba-tag-l { left: 12px; } .ba-tag-r { right: 12px; background: rgba(249,115,22,.92); color: #0b0e15; }
+    @media (max-width: 600px) { .ba { aspect-ratio: 4 / 3; } .ba-tag { font-size: 9px; letter-spacing: .06em; padding: 2px 7px; bottom: 7px; } .ba-tag-l { left: 8px; } .ba-tag-r { right: 8px; } .ba-handle { width: 40px; height: 40px; } }
+    .ba-cap { text-align: center; font-size: 13px; color: var(--muted); margin-top: 12px; }
+    /* the "after" mock */
+    .ba-after { background: radial-gradient(ellipse at 80% 0%, rgba(249,115,22,.18), transparent 55%), linear-gradient(160deg, #0f1524, #0b0e15); color: #e6e9f0; font-family: Inter, sans-serif; padding: 2.4cqw 4cqw; }
+    .m-nav { display: flex; align-items: center; gap: 2.6cqw; font-size: 1.5cqw; color: #9aa4b5; }
+    .m-nav b { color: #fff; font-size: 2cqw; margin-right: auto; } .m-nav i { color: #f97316; font-style: normal; }
+    .m-btn { background: #f97316; color: #0b0e15; font-weight: 700; padding: .7cqw 1.6cqw; border-radius: .8cqw; }
+    .m-btn.big { font-size: 1.7cqw; padding: 1.1cqw 2.4cqw; }
+    .m-hero { margin: 4.5cqw auto 0; max-width: 78%; text-align: center; }
+    .m-tag { display: inline-block; font-size: 1.3cqw; color: #fbbf24; background: rgba(251,191,36,.1); border: 1px solid rgba(251,191,36,.3); padding: .5cqw 1.2cqw; border-radius: 99px; }
+    .m-h { font-size: 4.6cqw; font-weight: 800; letter-spacing: -.04em; line-height: 1.05; color: #fff; margin-top: 1.6cqw; }
+    .m-h em { font-style: normal; background: linear-gradient(90deg,#f97316,#fbbf24); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .m-p { font-size: 1.6cqw; color: #9aa4b5; margin-top: 1.6cqw; line-height: 1.5; }
+    .m-ctas { display: flex; justify-content: center; gap: 1.4cqw; align-items: center; margin-top: 2.4cqw; font-size: 1.5cqw; }
+    .m-ghost { border: 1px solid rgba(255,255,255,.25); padding: 1cqw 2cqw; border-radius: .8cqw; color: #e6e9f0; }
+    .m-cards { position: absolute; left: 4cqw; right: 4cqw; bottom: 3cqw; display: grid; grid-template-columns: repeat(3,1fr); gap: 1.6cqw; }
+    .m-cards div { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: 1.2cqw; padding: 1.6cqw; display: flex; flex-direction: column; gap: .4cqw; }
+    .m-cards b { font-size: 1.6cqw; color: #fff; } .m-cards span { font-size: 1.3cqw; color: #f97316; }
+    /* the "before" mock */
+    .ba-before { background: #c0c0c0 repeating-linear-gradient(45deg, #c8c8c8 0 6px, #bdbdbd 6px 12px); font-family: "Times New Roman", Times, serif; color: #000; text-align: center; padding: 2cqw 3cqw; }
+    .o-head { font-family: "Comic Sans MS", "Comic Sans", cursive; font-size: 3.6cqw; color: #0000cc; font-weight: 700; text-shadow: 2px 2px 0 #ffff00; }
+    .o-row { font-size: 1.7cqw; margin-top: 1.4cqw; } .o-row span { color: #0000ee; text-decoration: underline; }
+    .o-body { background: #fff; border: 3px ridge #888; margin: 2cqw auto 0; width: 78%; padding: 2cqw; }
+    .o-construct { background: #ffff00; font-weight: 700; font-size: 1.8cqw; padding: .6cqw; border: 2px dashed #000; }
+    .o-body p { font-size: 1.8cqw; margin-top: 1.4cqw; line-height: 1.3; text-align: left; }
+    .o-call { color: #ff0000 !important; font-weight: 700; text-align: center !important; font-size: 2.4cqw !important; animation: oblink 1.2s steps(1) infinite; }
+    @keyframes oblink { 50% { visibility: hidden; } }
+    .o-small { font-size: 1.3cqw !important; color: #666; font-style: italic; text-align: center !important; }
+    .o-counter { margin-top: 1.4cqw; font-size: 1.4cqw; } .o-counter span { font-family: "Courier New", monospace; background: #000; color: #0f0; padding: .2cqw .8cqw; letter-spacing: .2em; }
+
+    /* speed badge */
+    .lh-badge { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 18px; margin: 0 auto 22px; padding: 14px 20px; border-radius: 16px;
+      border: 1px solid var(--border); background: rgba(255,255,255,.75); text-decoration: none; color: var(--ink); transition: border-color .2s, transform .2s; }
+    .lh-badge:hover { border-color: rgba(34,197,94,.55); transform: translateY(-2px); }
+    .lh-title { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+    .lh-score { display: inline-flex; align-items: center; gap: 8px; }
+    .lh-score b { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 800; color: #0f7a3a;
+      background: radial-gradient(closest-side, #fff 78%, transparent 80% 100%), conic-gradient(#22c55e calc(var(--v) * 1%), rgba(34,197,94,.15) 0); }
+    .lh-score i { font-style: normal; font-size: 13px; color: var(--muted); }
+    .lh-run { font-size: 13px; font-weight: 600; color: #2563eb; }
+    footer { text-align: center; }
+    @media (max-width: 600px) { .lh-badge { display: grid; grid-template-columns: 1fr 1fr; justify-items: start; gap: 12px 16px; } .lh-title, .lh-run { grid-column: 1 / -1; justify-self: center; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .caret, .o-call { animation: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -632,6 +718,7 @@
   <a href="/" class="nav-logo">Streak<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#ai-setup">AI Services</a></li>
+    <li class="nav-hide-sm"><a href="#websites">Websites</a></li>
     <li class="nav-hide-sm"><a href="#what-we-build">RevOps</a></li>
     <li><a href="/imadeit/">I Made It</a></li>
     <li class="nav-hide-sm"><a href="#pricing">Pricing</a></li>
@@ -641,8 +728,8 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge"><span class="pulse-dot"></span>AI Setup &amp; Fractional RevOps · Tampa, FL</div>
-  <h1>Put AI to Work<br/><em>in Your Business.</em></h1>
+  <div class="hero-badge"><span class="pulse-dot"></span>AI Setup, Websites &amp; Fractional RevOps · Tampa, FL</div>
+  <h1 aria-label="Put AI to Work in Your Business.">Put AI to Work<br/><em aria-hidden="true">in Your <span class="rot-word" data-words="Business.|Bookings.|Reviews.|Follow-Ups.|Inbox.|Scheduling.">Business.</span></em><span class="caret" aria-hidden="true"></span></h1>
   <p>Chatbots that answer customers, follow-ups that send themselves, and tools that finally talk to each other. We set up practical AI around how you already work, then train your team to use it.</p>
   <div class="hero-ctas">
     <a href="mailto:hello@streakbizsolutions.com?subject=AI%20setup%20for%20my%20business" class="btn-primary">Book a Free AI Setup Call</a>
@@ -735,6 +822,82 @@
   </div>
 </section>
 
+<!-- WEBSITES -->
+<section class="section" id="websites">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Websites</div>
+      <h2 class="section-title">A Website That Works as Hard as You Do</h2>
+      <p class="section-sub">Custom sites for small businesses, rentals and venues, built to load fast, look right on a phone and turn visitors into calls and bookings. Want a chatbot or automatic follow-ups on it? We can build those in too.</p>
+    </div>
+    <div class="ba-wrap reveal-me">
+      <div class="ba" id="ba" style="--pos:50%">
+        <div class="ba-pane ba-after" aria-hidden="true">
+          <div class="m-nav"><b>Bayside<i>.</i></b><span>Services</span><span>Reviews</span><span class="m-btn">Book Now</span></div>
+          <div class="m-hero">
+            <div class="m-tag">★★★★★ 4.9 from 212 local reviews</div>
+            <div class="m-h">Fast, Friendly Plumbing<br/><em>Across Tampa Bay.</em></div>
+            <div class="m-p">Same-day repairs, upfront pricing, and online booking in under a minute.</div>
+            <div class="m-ctas"><span class="m-btn big">Book a Visit</span><span class="m-ghost">Call (555) 010-0199</span></div>
+          </div>
+          <div class="m-cards"><div><b>Leaks &amp; Repairs</b><span>Same day</span></div><div><b>Water Heaters</b><span>Install or fix</span></div><div><b>Drain Cleaning</b><span>Fixed price</span></div></div>
+        </div>
+        <div class="ba-pane ba-before" aria-hidden="true">
+          <div class="o-head">~*~ WELCOME TO BAYSIDE PLUMBING ~*~</div>
+          <div class="o-row"><span>Home</span> | <span>About Us</span> | <span>Services</span> | <span>Guestbook</span> | <span>Links</span></div>
+          <div class="o-body">
+            <div class="o-construct">🚧 This page is under construction! 🚧</div>
+            <p>We are a family owned plumbing company. Please call us for all of your plumbing needs!!! We do leaks, drains, water heaters and more.</p>
+            <p class="o-call">CALL TODAY: 555-010-0199</p>
+            <p class="o-small">Best viewed in Internet Explorer at 800x600</p>
+            <div class="o-counter">Visitors: <span>000412</span></div>
+          </div>
+        </div>
+        <div class="ba-line"><button class="ba-handle" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span>‹</span><span>›</span></button></div>
+        <span class="ba-tag ba-tag-l">Before</span><span class="ba-tag ba-tag-r">After</span>
+      </div>
+      <p class="ba-cap">Drag to compare. A sample redesign for a made-up local business.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card svc-card">
+        <h3>Small-Business Websites</h3>
+        <p>A fast, phone-friendly site built around your services, your area and how customers reach you. Designed for your business, not pulled from a template.</p>
+      </div>
+      <div class="problem-card svc-card">
+        <h3>Booking and Availability Sites</h3>
+        <p>Direct-booking pages with a live availability calendar for rentals, venues and appointments, so customers book with you instead of through a marketplace.</p>
+      </div>
+      <div class="problem-card svc-card">
+        <h3>Event and Venue Sites</h3>
+        <p>Show off the space, the packages and the details people ask about, with an inquiry form that lands in your inbox.</p>
+      </div>
+      <div class="problem-card svc-card">
+        <h3>Service Menus and Quote Requests</h3>
+        <p>A clear menu of what you offer and a request-a-quote form that collects the details you need before you call back.</p>
+      </div>
+      <div class="problem-card svc-card">
+        <h3>Hosting and a Domain You Own</h3>
+        <p>We set your site up on low-cost hosting under your own domain. You own the files and the address, with no lock-in.</p>
+      </div>
+      <div class="problem-card svc-card">
+        <h3>Updates When You Need Them</h3>
+        <p>New photos, prices or services when things change, plus a check that forms and links still work.</p>
+      </div>
+    </div>
+    <div class="recent-work">
+      <div class="recent-label">Examples</div>
+      <div class="recent-links">
+        <a href="https://yakinventures.com" target="_blank" rel="noopener">Yak In Ventures <span>Kayak and paddleboard rentals</span></a>
+        <a href="https://streakbizsolutions.com/">Streak Business Solutions <span>This site</span></a>
+      </div>
+      <p class="recent-note">Need a personal website for your career instead? <a href="/imadeit/">See I Made It</a>.</p>
+    </div>
+    <div class="hero-ctas" style="justify-content:center; margin-top:32px;">
+      <a href="mailto:hello@streakbizsolutions.com?subject=Website%20for%20my%20business" class="btn-primary">Talk About a Website</a>
+    </div>
+  </div>
+</section>
+
 <!-- WHAT WE BUILD -->
 <section class="section" id="what-we-build">
   <div class="section-inner">
@@ -778,7 +941,7 @@
     <div class="section-header">
       <div class="section-label">Pricing</div>
       <h2 class="section-title">RevOps Engagements</h2>
-      <p class="section-sub">AI setup is scoped on a call. For RevOps work, use these as a starting point: every engagement is a conversation first, and the final scope and price are set together.</p>
+      <p class="section-sub">AI setup and websites are scoped on a call. For RevOps work, use these as a starting point: every engagement is a conversation first, and the final scope and price are set together.</p>
     </div>
 
     <div class="pricing-tabs">
@@ -941,9 +1104,10 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Streak<span>.</span></div>
-  <div class="footer-tagline">AI Setup &amp; Fractional RevOps · Tampa, FL</div>
+  <div class="footer-tagline">AI Setup, Websites &amp; Fractional RevOps · Tampa, FL</div>
   <nav class="footer-links">
     <a href="#ai-setup">AI Services</a>
+    <a href="#websites">Websites</a>
     <a href="#what-we-build">RevOps</a>
     <a href="#pricing">Pricing</a>
     <a href="/imadeit/">I Made It</a>
@@ -951,6 +1115,14 @@
     <a href="/imadeit/privacy.html">Privacy</a>
     <a href="#contact">Contact</a>
   </nav>
+  <a class="lh-badge" href="https://pagespeed.web.dev/analysis?url=https%3A%2F%2Fstreakbizsolutions.com%2F" target="_blank" rel="noopener" title="Run Google's test on this site yourself">
+    <span class="lh-title">Google Lighthouse</span>
+    <span class="lh-score" style="--v:99"><b>99</b><i>Performance</i></span>
+    <span class="lh-score" style="--v:100"><b>100</b><i>Accessibility</i></span>
+    <span class="lh-score" style="--v:100"><b>100</b><i>Best Practices</i></span>
+    <span class="lh-score" style="--v:100"><b>100</b><i>SEO</i></span>
+    <span class="lh-run">Test it yourself →</span>
+  </a>
   <div class="footer-copy">© 2026 Streak Business Solutions LLC. All rights reserved.</div>
 </footer>
 
@@ -1012,23 +1184,29 @@
 </script>
 
 <script>
-/* Circuit ghost background: faint PCB traces that ripple in and out */
+/* Circuit ghost background: faint PCB traces that ripple in and out, light up under the cursor,
+   and carry little signals. Built to stay light on the main thread: the static traces are drawn once
+   on their own canvas, and the moving layers are composited at half resolution, only where they are. */
 (function () {
-  const cvs = document.getElementById('circuit-bg'); if (!cvs) return;
-  const ctx = cvs.getContext('2d');
+  const base = document.getElementById('circuit-bg'); if (!base) return;
+  const fx = document.createElement('canvas'); fx.id = 'circuit-fx'; fx.setAttribute('aria-hidden', 'true'); base.after(fx);
+  const bctx = base.getContext('2d'), ctx = fx.getContext('2d');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const G = 28, D = [[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]];
-  let W, H, dpr, art, scratch, sctx, ripples = [], last = 0, nextSpawn = 0;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const G = 28, D = [[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]], S = .5;   // S = scale of the effect layer
+  let W, H, art, sc, sctx, ripples = [], traces = [], pulses = [], last = 0, nextSpawn = 0, nextPulse = 0;
+  let mx = -999, my = -999, lightA = 0, lastMove = 0, running = false;
   const rnd = (a, b) => a + Math.random() * (b - a);
 
   function build() {
-    dpr = Math.min(window.devicePixelRatio || 1, 1.5); W = innerWidth; H = innerHeight;
-    cvs.width = W * dpr; cvs.height = H * dpr;
-    art = document.createElement('canvas'); art.width = cvs.width; art.height = cvs.height;
-    const a = art.getContext('2d'); a.scale(dpr, dpr);
+    W = innerWidth; H = innerHeight;
+    base.width = fx.width = W; base.height = fx.height = H;
+    art = document.createElement('canvas'); art.width = Math.ceil(W * S); art.height = Math.ceil(H * S);
+    sc = document.createElement('canvas'); sc.width = art.width; sc.height = art.height; sctx = sc.getContext('2d');
+    const full = document.createElement('canvas'); full.width = W; full.height = H;
+    const a = full.getContext('2d');
     a.strokeStyle = a.fillStyle = 'rgb(51,65,85)'; a.lineCap = 'round'; a.lineJoin = 'round';
     const cols = Math.ceil(W / G) + 1, rows = Math.ceil(H / G) + 1, used = new Set(), k = (x, y) => x + ',' + y;
-    // chips with pins
     const nChips = Math.max(2, Math.round(W * H / 200000));
     a.lineWidth = 1.2;
     for (let i = 0; i < nChips; i++) {
@@ -1037,7 +1215,7 @@
       for (let x = cx + 1; x < cx + cw; x++) { a.beginPath(); a.moveTo(x * G, cy * G); a.lineTo(x * G, cy * G - 7); a.moveTo(x * G, (cy + ch) * G); a.lineTo(x * G, (cy + ch) * G + 7); a.stroke(); }
       for (let y = cy; y <= cy + ch; y++) for (let x = cx; x <= cx + cw; x++) used.add(k(x, y));
     }
-    // traces: random walks on the grid with 45-degree bends, ending in via pads
+    traces = [];
     const n = Math.round(W * H / 5000);
     for (let t = 0; t < n; t++) {
       let x = rnd(0, cols) | 0, y = rnd(0, rows) | 0, dir = ((Math.random() * 4) | 0) * 2;
@@ -1051,48 +1229,113 @@
         x = nx; y = ny; used.add(k(x, y)); pts.push([x, y]);
       }
       if (pts.length < 3) continue;
+      const P = pts.map(q => [q[0] * G, q[1] * G]), L = [0];
+      for (let i = 1; i < P.length; i++) L.push(L[i - 1] + Math.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]));
+      traces.push({ P, L, len: L[L.length - 1], cx: P[0][0], cy: P[0][1] });
       a.lineWidth = Math.random() < .15 ? 2 : 1;
-      a.beginPath(); a.moveTo(pts[0][0] * G, pts[0][1] * G);
-      pts.slice(1).forEach(p => a.lineTo(p[0] * G, p[1] * G)); a.stroke();
-      [pts[0], pts[pts.length - 1]].forEach(p => {
-        a.beginPath(); a.arc(p[0] * G, p[1] * G, 2.8, 0, Math.PI * 2); a.lineWidth = 1.2;
-        Math.random() < .35 ? a.fill() : a.stroke();
-      });
+      a.beginPath(); a.moveTo(P[0][0], P[0][1]); P.slice(1).forEach(q => a.lineTo(q[0], q[1])); a.stroke();
+      [P[0], P[P.length - 1]].forEach(q => { a.beginPath(); a.arc(q[0], q[1], 2.8, 0, Math.PI * 2); a.lineWidth = 1.2; Math.random() < .35 ? a.fill() : a.stroke(); });
     }
-    scratch = document.createElement('canvas'); scratch.width = cvs.width; scratch.height = cvs.height; sctx = scratch.getContext('2d');
-    if (reduce) { ctx.clearRect(0, 0, cvs.width, cvs.height); ctx.globalAlpha = .08; ctx.drawImage(art, 0, 0); }
+    // the always-there ghost, drawn once
+    bctx.clearRect(0, 0, W, H); bctx.globalAlpha = reduce ? .08 : .045; bctx.drawImage(full, 0, 0);
+    // a darker half-size copy that the moving effects reveal
+    const ac = art.getContext('2d'); ac.drawImage(full, 0, 0, art.width, art.height);
+    ac.globalCompositeOperation = 'source-atop'; ac.fillStyle = 'rgb(30,41,59)'; ac.fillRect(0, 0, art.width, art.height);
+    ac.drawImage(art, 0, 0);   // thicken the half-size lines a little
   }
 
   function spawn(x, y) {
     const maxR = Math.hypot(Math.max(x, W - x), Math.max(y, H - y));
-    ripples.push({ x, y, r: 0, speed: rnd(110, 190), max: maxR, band: rnd(90, 150), peak: rnd(.22, .32) });
+    ripples.push({ x, y, r: 0, speed: rnd(110, 190), max: maxR, band: rnd(90, 150), peak: rnd(.26, .36) });
+  }
+  function pointAt(tr, d) {
+    let i = 1; while (i < tr.L.length - 1 && tr.L[i] < d) i++;
+    const a = tr.P[i - 1], b = tr.P[i], seg = (tr.L[i] - tr.L[i - 1]) || 1, f = Math.min(1, Math.max(0, (d - tr.L[i - 1]) / seg));
+    return [a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f];
+  }
+  function addPulse(near) {
+    if (!traces.length || pulses.length > 16) return;
+    let tr;
+    if (near) {
+      const c = traces.filter(t => Math.abs(t.cx - near[0]) < near[2] && Math.abs(t.cy - near[1]) < near[2]);
+      if (!c.length) return; tr = c[(Math.random() * c.length) | 0];
+    } else tr = traces[(Math.random() * traces.length) | 0];
+    if (tr.len < 60) return;
+    pulses.push({ tr, d: 0, v: rnd(140, 260), hot: Math.random() < .35 });
+  }
+
+  // paint the ripples and the cursor light as alpha masks into the half-size scratch, then reveal the art through them
+  function effects(dt) {
+    const target = (performance.now() - lastMove < 2500 && mx > -900) ? 1 : 0;
+    lightA += (target - lightA) * Math.min(1, dt * 4);
+    sctx.globalCompositeOperation = 'source-over'; sctx.clearRect(0, 0, sc.width, sc.height);
+    let any = false;
+    ripples.forEach(rp => {
+      rp.r += rp.speed * dt;
+      const fade = Math.max(0, 1 - rp.r / rp.max), inner = Math.max(0, rp.r - rp.band), outer = rp.r + rp.band, al = rp.peak * fade;
+      if (al < .005) return; any = true;
+      const x = rp.x * S, y = rp.y * S, g = sctx.createRadialGradient(x, y, inner * S, x, y, outer * S);
+      g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(.5, 'rgba(0,0,0,' + al + ')'); g.addColorStop(1, 'rgba(0,0,0,0)');
+      sctx.fillStyle = g;
+      const x0 = Math.max(0, x - outer * S), y0 = Math.max(0, y - outer * S);
+      sctx.fillRect(x0, y0, Math.min(sc.width, x + outer * S) - x0, Math.min(sc.height, y + outer * S) - y0);
+    });
+    ripples = ripples.filter(rp => rp.r < rp.max);
+    if (lightA > .01) {
+      any = true; const R = 190 * S, x = mx * S, y = my * S, g = sctx.createRadialGradient(x, y, 0, x, y, R);
+      g.addColorStop(0, 'rgba(0,0,0,' + (.8 * lightA) + ')'); g.addColorStop(.55, 'rgba(0,0,0,' + (.35 * lightA) + ')'); g.addColorStop(1, 'rgba(0,0,0,0)');
+      sctx.fillStyle = g; sctx.fillRect(x - R, y - R, R * 2, R * 2);
+    }
+    if (!any) return;
+    sctx.globalCompositeOperation = 'source-in'; sctx.drawImage(art, 0, 0);
+    ctx.globalAlpha = 1; ctx.drawImage(sc, 0, 0, W, H);
+  }
+  function drawPulses(dt) {
+    pulses.forEach(p => {
+      p.d += p.v * dt;
+      const col = p.hot ? '249,115,22' : '59,130,246', fadeEnd = Math.min(1, (p.tr.len - p.d) / 40 + .15);
+      ctx.fillStyle = 'rgb(' + col + ')';
+      for (let k = 0; k < 6; k++) {
+        const dd = p.d - k * 8; if (dd < 0 || dd > p.tr.len) continue;
+        const q = pointAt(p.tr, dd);
+        ctx.globalAlpha = (1 - k / 6) * .75 * Math.max(0, fadeEnd);
+        ctx.beginPath(); ctx.arc(q[0], q[1], k ? 1.6 : 2.4, 0, Math.PI * 2); ctx.fill();
+      }
+      if (p.d <= p.tr.len) { const q = pointAt(p.tr, p.d), g = ctx.createRadialGradient(q[0], q[1], 0, q[0], q[1], 14);
+        g.addColorStop(0, 'rgba(' + col + ',.35)'); g.addColorStop(1, 'rgba(' + col + ',0)');
+        ctx.globalAlpha = 1; ctx.fillStyle = g; ctx.fillRect(q[0] - 14, q[1] - 14, 28, 28); }
+    });
+    pulses = pulses.filter(p => p.d - 46 < p.tr.len);
   }
 
   function frame(now) {
+    if (document.hidden) { running = false; last = 0; return; }
+    requestAnimationFrame(frame);
+    if (now - last < 31) return;                       // about 30 frames a second is plenty for a background
     const dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
     if (now > nextSpawn && ripples.length < 3) { spawn(rnd(0, W), rnd(0, H)); nextSpawn = now + rnd(1800, 3200); }
-    ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.clearRect(0, 0, cvs.width, cvs.height);
-    ctx.globalAlpha = .045; ctx.drawImage(art, 0, 0);            // the always-there ghost
-    ripples.forEach(rp => {
-      rp.r += rp.speed * dt;
-      const fade = Math.max(0, 1 - rp.r / rp.max), inner = Math.max(0, rp.r - rp.band), outer = rp.r + rp.band;
-      sctx.globalCompositeOperation = 'source-over'; sctx.clearRect(0, 0, scratch.width, scratch.height); sctx.drawImage(art, 0, 0);
-      sctx.globalCompositeOperation = 'destination-in';
-      const g = sctx.createRadialGradient(rp.x * dpr, rp.y * dpr, inner * dpr, rp.x * dpr, rp.y * dpr, outer * dpr);
-      g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(.5, 'rgba(0,0,0,1)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-      sctx.fillStyle = g; sctx.fillRect(0, 0, scratch.width, scratch.height);
-      ctx.globalAlpha = rp.peak * fade; ctx.drawImage(scratch, 0, 0);
-    });
-    ripples = ripples.filter(rp => rp.r < rp.max);
-    requestAnimationFrame(frame);
+    if (now > nextPulse) { addPulse(); nextPulse = now + rnd(350, 750); }
+    ctx.globalAlpha = 1; ctx.clearRect(0, 0, W, H);
+    effects(dt); drawPulses(dt); ctx.globalAlpha = 1;
   }
+  function start() { if (!running && !reduce) { running = true; requestAnimationFrame(frame); } }
 
   build();
   let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(build, 200); });
-  if (!reduce) {
-    addEventListener('pointerdown', e => { if (ripples.length < 4) spawn(e.clientX, e.clientY); });
-    spawn(W * .7, H * .3); requestAnimationFrame(frame);
-  }
+  if (reduce) return;
+  addEventListener('pointerdown', e => { if (ripples.length < 4) spawn(e.clientX, e.clientY); mx = e.clientX; my = e.clientY; lastMove = performance.now();
+    for (let i = 0; i < 4; i++) addPulse([mx, my, 220]); });
+  let lastSeed = 0;
+  if (fine) addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; const n = performance.now(); lastMove = n;
+    if (n - lastSeed > 140) { lastSeed = n; addPulse([mx, my, 170]); } }, { passive: true });
+  document.addEventListener('mouseleave', () => { lastMove = 0; });
+  document.addEventListener('visibilitychange', start);
+  // signals run toward a card when you hover it
+  if (fine) document.addEventListener('pointerover', e => {
+    const c = e.target.closest && e.target.closest('.tilt'); if (!c) { window.__lastCard = null; return; } if (c === window.__lastCard) return; window.__lastCard = c;
+    const r = c.getBoundingClientRect(); for (let i = 0; i < 6; i++) addPulse([r.left + r.width / 2, r.top + r.height / 2, Math.max(r.width, r.height) / 2 + 60]);
+  });
+  spawn(W * .7, H * .3); start();
 })();
 
 /* Floating cards + scroll reveal */
@@ -1102,10 +1345,73 @@
     el.style.animationDelay = (-(i % 5) * 1.3) + 's';
     el.style.animationDuration = (6.5 + (i % 3) * 1.2) + 's';
   });
-  const els = document.querySelectorAll('.section-header, .problem-grid, .hourly-grid, .retainer-grid');
+  // tilt + glare on hover-capable screens
+  const reduceM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceM) {
+    document.querySelectorAll('.problem-card, .hourly-card, .retainer-card').forEach(el => {
+      el.classList.add('tilt'); const gl = document.createElement('span'); gl.className = 'glare'; el.appendChild(gl);
+      let raf = 0;
+      el.addEventListener('pointermove', e => {
+        const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        cancelAnimationFrame(raf); raf = requestAnimationFrame(() => {
+          el.classList.add('tilting');
+          el.style.transform = 'perspective(900px) rotateX(' + ((.5 - y) * 9).toFixed(2) + 'deg) rotateY(' + ((x - .5) * 11).toFixed(2) + 'deg)';
+          el.style.setProperty('--gx', (x * 100).toFixed(1) + '%'); el.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+        });
+      });
+      el.addEventListener('pointerleave', () => { cancelAnimationFrame(raf); el.classList.remove('tilting'); el.style.transform = ''; });
+    });
+  } else {
+    document.querySelectorAll('.problem-card, .hourly-card, .retainer-card').forEach(el => el.classList.add('tilt'));
+  }
+  const els = document.querySelectorAll('.section-header, .problem-grid, .hourly-grid, .retainer-grid, .ba-wrap');
   if (!('IntersectionObserver' in window)) return;
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
   els.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+})();
+
+/* Rotating headline: types and rewrites the last word */
+(function () {
+  const el = document.querySelector('.rot-word'); if (!el) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const words = el.dataset.words.split('|'); let wi = 0;
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  (async function loop() {
+    await wait(2600);
+    while (true) {
+      const cur = words[wi]; wi = (wi + 1) % words.length; const next = words[wi];
+      for (let i = cur.length; i >= 0; i--) { el.textContent = cur.slice(0, i); await wait(45); }
+      await wait(220);
+      for (let i = 1; i <= next.length; i++) { el.textContent = next.slice(0, i); await wait(85); }
+      await wait(2300);
+    }
+  })();
+})();
+
+/* Before / after slider */
+(function () {
+  const ba = document.getElementById('ba'); if (!ba) return;
+  const h = ba.querySelector('.ba-handle'); let pos = 50, dragging = false, touched = false;
+  const set = v => { pos = Math.max(0, Math.min(100, v)); ba.style.setProperty('--pos', pos + '%'); h.setAttribute('aria-valuenow', Math.round(pos)); };
+  const fromX = x => { const r = ba.getBoundingClientRect(); set((x - r.left) / r.width * 100); };
+  ba.addEventListener('pointerdown', e => { touched = true; dragging = true; ba.setPointerCapture(e.pointerId); fromX(e.clientX); });
+  ba.addEventListener('pointermove', e => { if (dragging) fromX(e.clientX); });
+  ['pointerup', 'pointercancel'].forEach(t => ba.addEventListener(t, () => { dragging = false; }));
+  h.addEventListener('keydown', e => {
+    const step = e.shiftKey ? 10 : 4;
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { set(pos - step); e.preventDefault(); touched = true; }
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { set(pos + step); e.preventDefault(); touched = true; }
+    if (e.key === 'Home') { set(0); e.preventDefault(); } if (e.key === 'End') { set(100); e.preventDefault(); }
+  });
+  // a little nudge the first time it comes into view, so people know it moves
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; io.disconnect();
+    const keys = [[0, 50], [700, 22], [1500, 78], [2300, 50]], t0 = performance.now();
+    (function step(now) { if (touched) return; const t = now - t0; let k = 1; while (k < keys.length - 1 && keys[k][0] < t) k++;
+      const [ta, va] = keys[k - 1], [tb, vb] = keys[k], f = Math.min(1, Math.max(0, (t - ta) / (tb - ta))), e = f < .5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2;
+      set(va + (vb - va) * e); if (t < keys[keys.length - 1][0]) requestAnimationFrame(step); })(t0);
+  }, { threshold: .5 });
+  io.observe(ba);
 })();
 </script>
 
