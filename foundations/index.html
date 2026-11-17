@@ -444,5 +444,41 @@
   <div class="footer-copy">© 2026 Streak Business Solutions LLC. All rights reserved.</div>
 </footer>
 
+<script>
+/* Email buttons: mailto links open the visitor's mail app. On a computer with no mail app set up the click
+   does nothing, so if the page is still in focus a moment later, show the address with Copy and Gmail options. */
+(function () {
+  let box, timer;
+  function show(link) {
+    const u = new URL(link.href), to = decodeURIComponent(u.pathname), su = u.searchParams.get('subject') || '', body = u.searchParams.get('body') || '';
+    const gmail = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(to) + (su ? '&su=' + encodeURIComponent(su) : '') + (body ? '&body=' + encodeURIComponent(body) : '');
+    if (!box) {
+      box = document.createElement('div'); box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Email us');
+      box.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:1000;max-width:calc(100vw - 32px);background:#0b0e15;color:#f1f5f9;border:1px solid #2a3249;border-radius:12px;padding:16px 18px;box-shadow:0 12px 40px rgba(0,0,0,.35);font-family:inherit;font-size:15px;line-height:1.5;font-weight:500;text-align:center';
+      document.body.appendChild(box);
+    }
+    box.innerHTML = '<div style="margin-bottom:10px">Email us at <strong style="color:#fb923c"></strong></div>' +
+      '<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">' +
+      '<button type="button" data-copy style="background:#f97316;color:#fff;border:0;border-radius:8px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer">Copy address</button>' +
+      '<a data-gmail target="_blank" rel="noopener" style="color:#f1f5f9;border:1px solid #2a3249;border-radius:8px;padding:8px 14px;text-decoration:none;font-weight:600">Open in Gmail</a>' +
+      '<button type="button" data-close aria-label="Close" style="background:transparent;color:#94a3b8;border:0;padding:8px 10px;font:inherit;cursor:pointer">Close</button></div>';
+    box.querySelector('strong').textContent = to;
+    box.querySelector('[data-gmail]').href = gmail;
+    box.querySelector('[data-copy]').onclick = function () {
+      const b = this; (navigator.clipboard ? navigator.clipboard.writeText(to) : Promise.reject()).then(() => { b.textContent = 'Copied'; }, () => { b.textContent = to; });
+    };
+    box.querySelector('[data-close]').onclick = () => { box.remove(); box = null; };
+  }
+  document.addEventListener('click', e => {
+    const link = e.target.closest && e.target.closest('a[href^="mailto:"]');
+    if (!link || link.closest('[role="dialog"]')) return;
+    clearTimeout(timer);
+    const left = () => clearTimeout(timer);
+    addEventListener('blur', left, { once: true });
+    document.addEventListener('visibilitychange', left, { once: true });
+    timer = setTimeout(() => { if (document.hasFocus() && !document.hidden) show(link); }, 900);
+  });
+})();
+</script>
 </body>
 </html>
